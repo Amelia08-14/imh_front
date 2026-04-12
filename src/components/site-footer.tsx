@@ -1,20 +1,21 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const footerGroups = [
   {
     title: "NOS MAISONS",
     links: [
-      { label: "La Maison de l'Homme", href: "#univers" },
-      { label: "La Maison de la Femme", href: "#decouvrir" },
-      { label: "For Mr & Mrs", href: "#decouvrir" },
-      { label: "La Maison Spa", href: "#decouvrir" },
+      { label: "La Maison de l'Homme", href: "/la-maison-de-l-homme" },
+      { label: "La Maison de la Femme", href: "/la-maison-de-la-femme" },
+      { label: "For Mr & Mrs", href: "/#decouvrir" },
+      { label: "La Maison Spa", href: "/#decouvrir" },
     ],
   },
   {
     title: "DÉCOUVRIR",
     links: [
-      { label: "Carte des services", href: "#decouvrir" },
-      { label: "Nos emplacements", href: "#localisation" },
+      { label: "Carte des services", href: "/#decouvrir" },
+      { label: "Nos emplacements", href: "/#localisation" },
       { label: "Devenir franchisé", href: "#footer-contact" },
       { label: "Réserver un soin", href: "#footer-contact" },
       { label: "Contactez-nous", href: "#footer-contact" },
@@ -31,26 +32,26 @@ export function SiteFooter() {
   return (
     <footer
       id="footer-contact"
-      className="relative mt-28 border-t border-white/10 bg-black/90"
+      className="relative mt-28 border-t border-white/10 bg-[var(--brand-ink)]"
     >
-      <div className="mx-auto grid w-full max-w-7xl gap-12 px-6 py-16 lg:grid-cols-[1.2fr_1fr_1fr_1fr]">
+      <div className="mx-auto grid w-full max-w-[88rem] gap-12 px-6 py-16 sm:px-8 lg:grid-cols-[1.2fr_1fr_1fr_1fr] xl:px-10">
         <div>
-          <a href="#" className="relative block h-16 w-36">
+          <Link href="/" className="relative block h-12 w-28">
             <Image
-              src="/logo%20IN.png"
+              src="/IMH%20BLANC.png"
               alt="IN Beauty & Health"
               fill
               className="object-contain object-left"
             />
-          </a>
-          <p className="mt-6 max-w-sm text-sm leading-8 text-white/55">
+          </Link>
+          <p className="mt-6 max-w-sm text-sm leading-8 text-[var(--brand-slate)]">
             Le premier réseau de maisons de beauté et de bien-être haut de
             gamme en Algérie. L&apos;excellence et le luxe au service de votre
             sérénité.
           </p>
 
           <div className="mt-8">
-            <div className="text-xs tracking-[0.35em] text-white/45">
+            <div className="text-xs tracking-[0.35em] text-[var(--brand-slate)]">
               SUIVEZ-NOUS
             </div>
             <div className="mt-5 flex items-center gap-3">
@@ -59,7 +60,7 @@ export function SiteFooter() {
                   key={link.label}
                   href={link.href}
                   aria-label={link.label}
-                  className="grid size-11 place-items-center rounded-full border border-white/10 text-sm text-white/75 transition-colors hover:border-[#c9a35b]/50 hover:text-[#c9a35b]"
+                  className="grid size-11 place-items-center rounded-full border border-white/10 text-sm text-[var(--brand-slate)] transition-colors hover:border-[var(--brand-cyan)]/50 hover:text-[var(--brand-cyan)]"
                 >
                   {link.short}
                 </a>
@@ -70,19 +71,19 @@ export function SiteFooter() {
 
         {footerGroups.map((group) => (
           <div key={group.title}>
-            <div className="flex items-center gap-3 text-xs tracking-[0.32em] text-[#c9a35b]">
-              <span className="inline-block h-px w-6 bg-[#c9a35b]/60" />
+            <div className="flex items-center gap-3 text-xs tracking-[0.32em] text-[var(--brand-amber)]">
+              <span className="inline-block h-px w-6 bg-[var(--brand-amber)]/60" />
               <span>{group.title}</span>
             </div>
-            <ul className="mt-7 space-y-4 text-white/55">
+            <ul className="mt-7 space-y-4 text-[var(--brand-slate)]">
               {group.links.map((link) => (
                 <li key={link.label}>
-                  <a
+                  <Link
                     href={link.href}
                     className="transition-colors hover:text-white"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -90,7 +91,7 @@ export function SiteFooter() {
         ))}
 
         <div>
-          <div className="space-y-5 text-white/55">
+          <div className="space-y-5 text-[var(--brand-slate)]">
             <div className="flex items-start gap-4">
               <span className="grid size-10 place-items-center rounded-full border border-white/10">
                 <svg
@@ -140,7 +141,10 @@ export function SiteFooter() {
                   />
                 </svg>
               </span>
-              <a href="tel:+2130555000000" className="transition-colors hover:text-white">
+              <a
+                href="tel:+2130555000000"
+                className="transition-colors hover:text-white"
+              >
                 +213 (0) 555 00 00 00
               </a>
             </div>
@@ -179,7 +183,7 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="mx-auto flex w-full max-w-7xl flex-col gap-4 px-6 py-6 text-xs tracking-[0.18em] text-white/35 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mx-auto flex w-full max-w-[88rem] flex-col gap-4 px-6 py-6 text-xs tracking-[0.18em] text-[var(--brand-slate)] sm:flex-row sm:items-center sm:justify-between sm:px-8 xl:px-10">
           <div>© 2026 IN BEAUTY &amp; HEALTH. TOUS DROITS RÉSERVÉS.</div>
           <div className="flex flex-wrap items-center gap-6">
             <a href="#" className="transition-colors hover:text-white/60">

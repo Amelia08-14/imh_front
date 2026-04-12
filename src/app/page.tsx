@@ -8,21 +8,25 @@ const universeCards = [
     label: "La Maison de l'Homme",
     image: "/maison_homme.jpg",
     tagline: "L'ÉLÉGANCE AU MASCULIN",
+    href: "/la-maison-de-l-homme",
   },
   {
     label: "La Maison de la Femme",
     image: "/maison_femme.jpg",
     tagline: "PARENTHÈSE DE DÉTENTE",
+    href: "/la-maison-de-la-femme",
   },
   {
     label: "For MR & MRS",
     image: "/mme_mr.jpg",
     tagline: "UN MOMENT À DEUX",
+    href: "#",
   },
   {
     label: "IN SPA",
     image: "/spa.jpg",
     tagline: "RESSOURCEZ-VOUS",
+    href: "#",
   },
 ];
 
@@ -59,21 +63,28 @@ const locations = [
 
 export default function Home() {
   return (
-    <div className="min-h-full bg-black text-zinc-100">
-      <div className="pointer-events-none fixed inset-0 opacity-70 [background:radial-gradient(600px_circle_at_15%_10%,rgba(201,163,91,0.16),transparent_60%),radial-gradient(800px_circle_at_80%_30%,rgba(255,255,255,0.06),transparent_60%),radial-gradient(900px_circle_at_40%_90%,rgba(255,255,255,0.04),transparent_60%)]" />
+    <div className="min-h-full bg-[var(--brand-ink)] text-zinc-100">
+      <div className="pointer-events-none fixed inset-0 opacity-55 [background:radial-gradient(600px_circle_at_15%_10%,color-mix(in_srgb,var(--brand-amber)_12%,transparent),transparent_60%),radial-gradient(800px_circle_at_80%_30%,color-mix(in_srgb,var(--brand-cyan)_8%,transparent),transparent_60%),radial-gradient(900px_circle_at_40%_90%,color-mix(in_srgb,var(--brand-slate)_10%,transparent),transparent_60%)]" />
       <div className="relative">
-        <main className="mx-auto w-full max-w-7xl px-6 pb-24 pt-32 sm:pt-36">
+        <main className="mx-auto w-full max-w-[88rem] px-6 pb-24 pt-32 sm:px-8 sm:pt-36 xl:px-10">
           <section className="grid gap-12 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-6">
-              <div className="flex items-center gap-3 text-xs tracking-[0.3em] text-zinc-500">
-                <span className="inline-block h-px w-10 bg-[#c9a35b]/60" />
+              <div className="flex items-center gap-3 text-xs tracking-[0.3em] text-[var(--brand-slate)]">
+                <span className="inline-block h-px w-10 bg-[var(--brand-amber)]/60" />
                 <span>DEPUIS 2015</span>
               </div>
-              <h1 className="mt-6 font-serif text-5xl leading-[1.05] tracking-tight sm:text-6xl">
+              <div className="relative">
+                <div className="pointer-events-none absolute -left-2 top-8 hidden font-serif text-[14rem] leading-none text-white/[0.03] lg:block">
+                  N
+                </div>
+                <h1 className="relative mt-6 font-serif text-5xl leading-[0.98] tracking-tight sm:text-7xl">
                 L&apos;excellence{" "}
-                <span className="block italic text-[#c9a35b]">du bien-être</span>
-              </h1>
-              <p className="mt-6 max-w-xl text-base leading-7 text-zinc-400">
+                <span className="block italic text-[var(--brand-amber)]">
+                  du bien-être
+                </span>
+                </h1>
+              </div>
+              <p className="mt-6 max-w-xl text-base leading-7 text-[var(--brand-slate)]">
                 La première franchise de salons et d&apos;instituts en Algérie.
                 Plongez dans un univers dédié à la coiffure, l&apos;esthétique et
                 la relaxation pour lui &amp; pour elle.
@@ -81,16 +92,16 @@ export default function Home() {
               <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <a
                   href="#decouvrir"
-                  className="inline-flex h-12 items-center justify-center rounded-full bg-[#c9a35b] px-7 text-sm font-medium text-black transition-colors hover:bg-[#d7b26a]"
+                  className="inline-flex h-12 items-center justify-center rounded-full bg-[var(--brand-amber)] px-7 text-sm font-medium text-white transition-colors hover:bg-[color:color-mix(in_srgb,var(--brand-amber)_88%,white)]"
                 >
                   DÉCOUVRIR
                   <span className="ml-3 text-base">→</span>
                 </a>
                 <a
                   href="#univers"
-                  className="inline-flex h-12 items-center justify-center gap-3 rounded-full border border-white/10 bg-white/5 px-7 text-sm font-medium text-white transition-colors hover:bg-white/10"
+                  className="inline-flex h-12 items-center justify-center gap-3 rounded-full border border-[var(--brand-cyan)]/30 bg-white/5 px-7 text-sm font-medium text-white transition-colors hover:bg-white/10"
                 >
-                  <span className="grid size-8 place-items-center rounded-full border border-white/10 bg-black/40">
+                  <span className="grid size-8 place-items-center rounded-full border border-[var(--brand-cyan)]/30 bg-black/30 text-[var(--brand-cyan)]">
                     <svg
                       width="12"
                       height="12"
@@ -120,15 +131,15 @@ export default function Home() {
           <section id="decouvrir" className="mt-28">
             <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
               <div className="lg:col-span-4">
-                <div className="flex items-center gap-3 text-xs tracking-[0.3em] text-[#c9a35b]/80">
-                  <span className="inline-block h-px w-10 bg-[#c9a35b]/60" />
+                <div className="flex items-center gap-3 text-xs tracking-[0.3em] text-[var(--brand-amber)]/80">
+                  <span className="inline-block h-px w-10 bg-[var(--brand-amber)]/60" />
                   <span>DÉCOUVREZ</span>
                 </div>
-                <h2 className="mt-6 font-serif text-4xl leading-tight tracking-tight sm:text-5xl">
+                <h2 className="mt-6 font-serif text-4xl leading-tight tracking-tight sm:text-[3.1rem]">
                   Nos Univers
                 </h2>
               </div>
-              <p className="lg:col-span-8 lg:max-w-2xl lg:justify-self-end text-sm leading-7 text-zinc-400">
+              <p className="text-sm leading-7 text-[var(--brand-slate)] lg:col-span-8 lg:max-w-2xl lg:justify-self-end">
                 Une expertise complète rassemblant la coiffure, les soins et
                 l&apos;esthétique dans des cadres conçus pour votre bien-être.
               </p>
@@ -138,10 +149,10 @@ export default function Home() {
               {universeCards.map((card) => (
                 <a
                   key={card.label}
-                  href="#"
-                  className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 transition-colors hover:bg-white/10"
+                  href={card.href}
+                  className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 transition-colors hover:border-[var(--brand-cyan)]/25 hover:bg-white/10"
                 >
-                  <div className="relative h-[26rem] w-full sm:h-[30rem]">
+                  <div className="relative h-[22rem] w-full sm:h-[28rem]">
                     <Image
                       src={card.image}
                       alt={card.label}
@@ -151,22 +162,22 @@ export default function Home() {
                     />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent" />
-                  <div className="absolute inset-x-0 top-0 p-7">
-                    <div className="text-xs tracking-[0.28em] text-[#c9a35b]/75">
+                  <div className="absolute inset-x-0 top-0 p-5 sm:p-6">
+                    <div className="text-[10px] tracking-[0.24em] text-[var(--brand-amber)]/80">
                       {card.tagline}
                     </div>
                   </div>
-                  <div className="absolute inset-x-0 bottom-0 p-7">
-                    <div className="flex items-center gap-3 text-xs tracking-[0.28em] text-white/45">
-                      <span className="inline-block h-px w-10 bg-[#c9a35b]/50" />
-                      <span>IN BEAUTY &amp; HEALTH</span>
+                  <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
+                    <div className="flex items-center gap-3 text-[10px] tracking-[0.2em] text-white/40">
+                      <span className="inline-block h-px w-9 bg-[var(--brand-amber)]/60" />
+                      <span>IMH</span>
                     </div>
-                    <div className="mt-4 font-serif text-3xl leading-tight tracking-tight">
+                    <div className="mt-3 font-serif text-[2rem] leading-[1.04] tracking-tight">
                       {card.label}
                     </div>
-                    <div className="mt-4 inline-flex items-center gap-3 text-sm tracking-[0.18em] text-white/85">
+                    <div className="mt-4 inline-flex items-center gap-3 text-[11px] tracking-[0.24em] text-white/85">
                       DÉCOUVRIR
-                      <span className="grid size-9 place-items-center rounded-full border border-white/10 bg-white/5 transition-transform group-hover:translate-x-0.5">
+                      <span className="grid size-9 place-items-center rounded-full border border-[var(--brand-cyan)]/30 bg-white/5 text-[var(--brand-cyan)] transition-transform group-hover:translate-x-0.5">
                         →
                       </span>
                     </div>
@@ -181,11 +192,13 @@ export default function Home() {
             className="mt-28 grid gap-14 lg:grid-cols-12"
           >
             <div className="lg:col-span-5">
-              <h2 className="font-serif text-5xl leading-[1.05] tracking-tight sm:text-6xl">
+              <h2 className="font-serif text-5xl leading-[0.98] tracking-tight sm:text-6xl">
                 Où nous{" "}
-                <span className="block italic text-[#c9a35b]">trouver</span>
+                <span className="block italic text-[var(--brand-amber)]">
+                  trouver
+                </span>
               </h2>
-              <p className="mt-6 max-w-md text-sm leading-7 text-zinc-400">
+              <p className="mt-6 max-w-md text-sm leading-7 text-[var(--brand-slate)]">
                 Chaque Maison IN est pensée comme un sanctuaire de bien-être,
                 alliant design élégant et confort absolu pour une expérience
                 inoubliable.
@@ -193,7 +206,7 @@ export default function Home() {
 
               <div className="mt-10 overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-7">
                 <div className="flex items-center gap-3 text-sm font-medium">
-                  <span className="grid size-10 place-items-center rounded-2xl border border-white/10 bg-black/30">
+                  <span className="grid size-10 place-items-center rounded-2xl border border-[var(--brand-cyan)]/20 bg-black/20 text-[var(--brand-cyan)]">
                     <svg
                       width="18"
                       height="18"
@@ -216,7 +229,7 @@ export default function Home() {
                   </span>
                   <span>Notre Vision</span>
                 </div>
-                <p className="mt-4 text-sm leading-7 text-zinc-400">
+                <p className="mt-4 text-sm leading-7 text-[var(--brand-slate)]">
                   Nous étendons très prochainement notre réseau de franchises à
                   travers tout le territoire algérien.
                 </p>
@@ -224,7 +237,7 @@ export default function Home() {
                   {["Oran", "Constantine", "Annaba", "Sétif"].map((city) => (
                     <span
                       key={city}
-                      className="rounded-full border border-white/10 bg-black/30 px-4 py-2 text-xs tracking-[0.18em] text-white/80"
+                      className="rounded-full border border-white/10 bg-black/20 px-4 py-2 text-xs tracking-[0.18em] text-[var(--brand-lavender)]"
                     >
                       {city.toUpperCase()}
                     </span>
@@ -235,12 +248,12 @@ export default function Home() {
 
             <div className="lg:col-span-7">
               <div className="flex items-center justify-between">
-                <div className="text-xs tracking-[0.28em] text-zinc-500">
+                <div className="text-xs tracking-[0.28em] text-[var(--brand-slate)]">
                   LOCALISATION
                 </div>
                 <button
                   type="button"
-                  className="grid size-10 place-items-center rounded-full border border-[#c9a35b]/50 bg-[#c9a35b]/10 text-[#c9a35b]"
+                  className="grid size-10 place-items-center rounded-full border border-[var(--brand-amber)]/50 bg-[var(--brand-amber)]/10 text-[var(--brand-amber)]"
                 >
                   <span className="sr-only">Voir toutes les localisations</span>
                   +
@@ -253,27 +266,27 @@ export default function Home() {
                     key={loc.k}
                     className="grid gap-6 px-7 py-7 sm:grid-cols-[auto_1fr_auto] sm:items-center"
                   >
-                    <div className="text-xs tracking-[0.28em] text-zinc-600">
+                    <div className="text-xs tracking-[0.28em] text-[var(--brand-slate)]">
                       {loc.k}
                     </div>
                     <div>
                       <div className="font-serif text-3xl tracking-tight sm:text-4xl">
                         {loc.title}
                       </div>
-                      <div className="mt-2 text-xs tracking-[0.28em] text-[#c9a35b]/80">
+                      <div className="mt-2 text-xs tracking-[0.28em] text-[var(--brand-amber)]/80">
                         {loc.subtitle}
                       </div>
-                      <div className="mt-3 text-sm text-zinc-400">
+                      <div className="mt-3 text-sm text-[var(--brand-slate)]">
                         {loc.address}
                       </div>
                     </div>
                     <div className="flex items-center justify-between gap-4 sm:flex-col sm:items-end">
-                      <div className="text-xs tracking-[0.28em] text-zinc-500">
+                      <div className="text-xs tracking-[0.28em] text-[var(--brand-slate)]">
                         {loc.status}
                       </div>
                       <a
                         href="#"
-                        className="grid size-11 place-items-center rounded-full border border-white/10 bg-black/30 text-white/90 transition-colors hover:bg-white/10"
+                        className="grid size-11 place-items-center rounded-full border border-[var(--brand-cyan)]/25 bg-black/20 text-[var(--brand-cyan)] transition-colors hover:bg-white/10"
                         aria-label={`Voir ${loc.title}`}
                       >
                         →
