@@ -152,7 +152,7 @@ export function UniverseShowcase() {
                         className={[
                           "size-2 rounded-full border transition-colors",
                           dotIndex === activeIndex
-                            ? "border-[var(--brand-cyan)] bg-[var(--brand-cyan)]/80"
+                            ? "border-[var(--brand-amber)] bg-[var(--brand-amber)]/80"
                             : "border-white/10 bg-white/5",
                         ].join(" ")}
                       />

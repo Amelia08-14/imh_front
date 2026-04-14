@@ -50,7 +50,7 @@ export function HeroSlider() {
         />
       </div>
 
-      <div className="absolute bottom-[14%] left-[10%] z-20 h-[38%] w-[48%] overflow-hidden rounded-[2rem] border border-[var(--brand-cyan)]/75 shadow-[0_22px_60px_rgba(0,0,0,0.65)]">
+      <div className="absolute bottom-[14%] left-[10%] z-20 h-[38%] w-[48%] overflow-hidden rounded-[2rem] border border-[var(--brand-amber)]/75 shadow-[0_22px_60px_rgba(0,0,0,0.65)]">
         <Image
           src={orderedSlides.current.src}
           alt={orderedSlides.current.alt}

@@ -1,32 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-
-const footerGroups = [
-  {
-    title: "NOS MAISONS",
-    links: [
-      { label: "La Maison de l'Homme", href: "/la-maison-de-l-homme" },
-      { label: "La Maison de la Femme", href: "/la-maison-de-la-femme" },
-      { label: "For Mr & Mrs", href: "/#decouvrir" },
-      { label: "La Maison Spa", href: "/#decouvrir" },
-    ],
-  },
-  {
-    title: "DÉCOUVRIR",
-    links: [
-      { label: "Carte des services", href: "/#decouvrir" },
-      { label: "Nos emplacements", href: "/#localisation" },
-      { label: "Devenir franchisé", href: "#footer-contact" },
-      { label: "Réserver un soin", href: "#footer-contact" },
-      { label: "Contactez-nous", href: "#footer-contact" },
-    ],
-  },
-];
-
-const socialLinks = [
-  { label: "Instagram", short: "IG", href: "#" },
-  { label: "Facebook", short: "f", href: "#" },
-];
+import { footerGroups, socialLinks } from "@/lib/site-data";
 
 export function SiteFooter() {
   return (
@@ -60,7 +34,7 @@ export function SiteFooter() {
                   key={link.label}
                   href={link.href}
                   aria-label={link.label}
-                  className="grid size-11 place-items-center rounded-full border border-white/10 text-sm text-[var(--brand-slate)] transition-colors hover:border-[var(--brand-cyan)]/50 hover:text-[var(--brand-cyan)]"
+                  className="grid size-11 place-items-center rounded-full border border-white/10 text-sm text-[var(--brand-slate)] transition-colors hover:border-[var(--brand-amber)]/50 hover:text-[var(--brand-amber)]"
                 >
                   {link.short}
                 </a>

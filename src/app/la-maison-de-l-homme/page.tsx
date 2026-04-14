@@ -1,18 +1,12 @@
 import Image from "next/image";
+import { ReservationForm } from "@/components/reservation-form";
 
-const services = [
+const bookingServices = [
+  "Service",
   "Soin complet & coiffure",
   "Barbe premium",
   "Rasage signature",
   "Coloration",
-];
-
-const bookingSteps = [
-  "SERVICE",
-  "RENDEZ-VOUS",
-  "DÉTAILS",
-  "PAIEMENT",
-  "CONFIRMATION",
 ];
 
 const pricingTabs = [
@@ -43,8 +37,8 @@ export default function MaisonHommePage() {
       <div className="pointer-events-none fixed inset-0 opacity-55 [background:radial-gradient(700px_circle_at_18%_12%,color-mix(in_srgb,var(--brand-amber)_14%,transparent),transparent_60%),radial-gradient(900px_circle_at_82%_28%,color-mix(in_srgb,var(--brand-cyan)_8%,transparent),transparent_60%),radial-gradient(1000px_circle_at_50%_100%,color-mix(in_srgb,var(--brand-slate)_8%,transparent),transparent_60%)]" />
 
       <main className="relative mx-auto w-full max-w-[88rem] px-6 pb-24 pt-32 sm:px-8 sm:pt-36 xl:px-10">
-        <section className="grid gap-12 border-b border-white/8 pb-16 lg:grid-cols-12 lg:items-start">
-          <div className="lg:col-span-6">
+        <section className="grid gap-12 border-b border-white/8 pb-16 lg:grid-cols-12 lg:items-center">
+          <div className="lg:col-span-6 lg:self-center">
             <div className="flex items-center gap-3 text-[10px] tracking-[0.32em] text-[var(--brand-amber)]/85">
               <span className="inline-block h-px w-10 bg-[var(--brand-amber)]/60" />
               <span>LA MAISON DE L&apos;HOMME</span>
@@ -81,179 +75,35 @@ export default function MaisonHommePage() {
             </div>
           </div>
 
-          <div className="lg:col-span-6">
-            <div className="ml-auto max-w-[42rem] rounded-[2.25rem] border border-white/10 bg-white/[0.03] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.4)] backdrop-blur-sm sm:p-8">
-              <div className="relative flex items-center justify-between gap-3 overflow-hidden pb-6">
-                <div className="absolute left-0 right-0 top-2 h-px bg-white/8" />
-                {bookingSteps.map((step, index) => (
-                  <div
-                    key={step}
-                    className="relative z-10 flex flex-col items-center gap-3"
-                  >
-                    <span
-                      className={[
-                        "grid size-4 place-items-center rounded-full border text-[8px]",
-                        index === 0
-                          ? "border-[var(--brand-amber)] bg-[var(--brand-amber)] text-white"
-                          : "border-white/10 bg-[var(--brand-ink)] text-transparent",
-                      ].join(" ")}
-                    >
-                      •
-                    </span>
-                    <span
-                      className={[
-                        "text-[10px] tracking-[0.2em]",
-                        index === 0
-                          ? "text-[var(--brand-amber)]"
-                          : "text-white/30",
-                      ].join(" ")}
-                    >
-                      {`${index + 1}. ${step}`}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-2">
-                <div className="font-serif text-[2.6rem] leading-none tracking-tight">
-                  Choix des services
-                </div>
-              </div>
-
-              <div className="mt-8 space-y-5">
-                <div className="relative">
-                  <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-[var(--brand-slate)]">
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M12 21s7-4.4 7-11a7 7 0 10-14 0c0 6.6 7 11 7 11z"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                      />
-                      <path
-                        d="M12 13.5a3.5 3.5 0 110-7 3.5 3.5 0 010 7z"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                      />
-                    </svg>
-                  </span>
-                  <select className="h-16 w-full appearance-none rounded-[1.4rem] border border-white/10 bg-black/20 px-14 pr-14 text-base text-[var(--brand-slate)] outline-none">
-                    <option>Maison IN (Location)</option>
-                  </select>
-                  <span className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-[var(--brand-slate)]">
-                    ˅
-                  </span>
-                </div>
-
-                <div className="relative">
-                  <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-[var(--brand-slate)]">
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M4 7h6M4 17h6M14 7h6M14 17h6M9 4l6 16"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                  </span>
-                  <select className="h-16 w-full appearance-none rounded-[1.4rem] border border-white/10 bg-black/20 px-14 pr-14 text-base text-[var(--brand-slate)] outline-none">
-                    <option>Service</option>
-                    {services.map((service) => (
-                      <option key={service}>{service}</option>
-                    ))}
-                  </select>
-                  <span className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-[var(--brand-slate)]">
-                    ˅
-                  </span>
-                </div>
-
-                <div className="grid gap-5 md:grid-cols-2">
-                  <div className="relative">
-                    <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-[var(--brand-slate)]">
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                      >
-                        <path
-                          d="M12 12a3 3 0 100-6 3 3 0 000 6z"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                        />
-                        <path
-                          d="M5 20c1.7-3 4-4.5 7-4.5S17.3 17 19 20"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                        />
-                      </svg>
-                    </span>
-                    <select className="h-16 w-full appearance-none rounded-[1.4rem] border border-white/10 bg-black/20 px-14 pr-14 text-base text-[var(--brand-slate)] outline-none">
-                      <option>Assistant: Peu importe</option>
-                    </select>
-                    <span className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-[var(--brand-slate)]">
-                      ˅
-                    </span>
-                  </div>
-
-                  <div className="relative">
-                    <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-[var(--brand-slate)]">
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                      >
-                        <circle
-                          cx="12"
-                          cy="12"
-                          r="8"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                        />
-                        <path
-                          d="M12 8v4l3 2"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                        />
-                      </svg>
-                    </span>
-                    <select className="h-16 w-full appearance-none rounded-[1.4rem] border border-white/10 bg-black/20 px-14 pr-14 text-base text-[var(--brand-slate)] outline-none">
-                      <option>Date & Heure</option>
-                    </select>
-                    <span className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-[var(--brand-slate)]">
-                      ˅
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <button
-                type="button"
-                className="mt-8 inline-flex h-14 w-full items-center justify-center rounded-[1.25rem] bg-white px-6 text-[11px] font-medium tracking-[0.24em] text-black transition-colors hover:bg-white/90"
-              >
-                VÉRIFIER LES DISPONIBILITÉS
-              </button>
-            </div>
+          <div className="lg:col-span-6 lg:self-center">
+            <ReservationForm
+              accent="#b66b00"
+              title="Choix des services"
+              subtitle="RÉSERVATION PERSONNALISÉE"
+              locations={[
+                "Maison IN El Biar",
+                "Maison IN El Mouradia",
+              ]}
+              services={bookingServices}
+              assistants={[
+                "Assistant : Peu importe",
+                "Karim Z.",
+                "Mehdi R.",
+                "Omar K.",
+              ]}
+              schedule={[
+                {
+                  value: "2026-03-27",
+                  label: "Jeudi 27/03/2026",
+                  times: ["08:00", "11:30", "19:00"],
+                },
+                {
+                  value: "2026-03-28",
+                  label: "Vendredi 28/03/2026",
+                  times: ["09:00", "14:00", "18:30"],
+                },
+              ]}
+            />
           </div>
         </section>
 

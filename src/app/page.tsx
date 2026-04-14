@@ -20,13 +20,13 @@ const universeCards = [
     label: "For MR & MRS",
     image: "/mme_mr.jpg",
     tagline: "UN MOMENT À DEUX",
-    href: "#",
+    href: "/for-mr-and-mrs",
   },
   {
     label: "IN SPA",
     image: "/spa.jpg",
     tagline: "RESSOURCEZ-VOUS",
-    href: "#",
+    href: "/in-spa",
   },
 ];
 
@@ -64,7 +64,7 @@ const locations = [
 export default function Home() {
   return (
     <div className="min-h-full bg-[var(--brand-ink)] text-zinc-100">
-      <div className="pointer-events-none fixed inset-0 opacity-55 [background:radial-gradient(600px_circle_at_15%_10%,color-mix(in_srgb,var(--brand-amber)_12%,transparent),transparent_60%),radial-gradient(800px_circle_at_80%_30%,color-mix(in_srgb,var(--brand-cyan)_8%,transparent),transparent_60%),radial-gradient(900px_circle_at_40%_90%,color-mix(in_srgb,var(--brand-slate)_10%,transparent),transparent_60%)]" />
+      <div className="pointer-events-none fixed inset-0 opacity-55 [background:radial-gradient(600px_circle_at_15%_10%,color-mix(in_srgb,var(--brand-amber)_12%,transparent),transparent_60%),radial-gradient(800px_circle_at_80%_30%,color-mix(in_srgb,var(--brand-amber)_7%,transparent),transparent_60%),radial-gradient(900px_circle_at_40%_90%,color-mix(in_srgb,var(--brand-slate)_10%,transparent),transparent_60%)]" />
       <div className="relative">
         <main className="mx-auto w-full max-w-[88rem] px-6 pb-24 pt-32 sm:px-8 sm:pt-36 xl:px-10">
           <section className="grid gap-12 lg:grid-cols-12 lg:items-center">
@@ -99,9 +99,9 @@ export default function Home() {
                 </a>
                 <a
                   href="#univers"
-                  className="inline-flex h-12 items-center justify-center gap-3 rounded-full border border-[var(--brand-cyan)]/30 bg-white/5 px-7 text-sm font-medium text-white transition-colors hover:bg-white/10"
+                  className="inline-flex h-12 items-center justify-center gap-3 rounded-full border border-[var(--brand-amber)]/30 bg-white/5 px-7 text-sm font-medium text-white transition-colors hover:bg-white/10"
                 >
-                  <span className="grid size-8 place-items-center rounded-full border border-[var(--brand-cyan)]/30 bg-black/30 text-[var(--brand-cyan)]">
+                  <span className="grid size-8 place-items-center rounded-full border border-[var(--brand-amber)]/30 bg-black/30 text-[var(--brand-amber)]">
                     <svg
                       width="12"
                       height="12"
@@ -150,7 +150,7 @@ export default function Home() {
                 <a
                   key={card.label}
                   href={card.href}
-                  className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 transition-colors hover:border-[var(--brand-cyan)]/25 hover:bg-white/10"
+                  className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 transition-colors hover:border-[var(--brand-amber)]/25 hover:bg-white/10"
                 >
                   <div className="relative h-[22rem] w-full sm:h-[28rem]">
                     <Image
@@ -177,7 +177,7 @@ export default function Home() {
                     </div>
                     <div className="mt-4 inline-flex items-center gap-3 text-[11px] tracking-[0.24em] text-white/85">
                       DÉCOUVRIR
-                      <span className="grid size-9 place-items-center rounded-full border border-[var(--brand-cyan)]/30 bg-white/5 text-[var(--brand-cyan)] transition-transform group-hover:translate-x-0.5">
+                      <span className="grid size-9 place-items-center rounded-full border border-[var(--brand-amber)]/30 bg-white/5 text-[var(--brand-amber)] transition-transform group-hover:translate-x-0.5">
                         →
                       </span>
                     </div>
@@ -206,7 +206,7 @@ export default function Home() {
 
               <div className="mt-10 overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-7">
                 <div className="flex items-center gap-3 text-sm font-medium">
-                  <span className="grid size-10 place-items-center rounded-2xl border border-[var(--brand-cyan)]/20 bg-black/20 text-[var(--brand-cyan)]">
+                  <span className="grid size-10 place-items-center rounded-2xl border border-[var(--brand-amber)]/20 bg-black/20 text-[var(--brand-amber)]">
                     <svg
                       width="18"
                       height="18"
@@ -286,7 +286,7 @@ export default function Home() {
                       </div>
                       <a
                         href="#"
-                        className="grid size-11 place-items-center rounded-full border border-[var(--brand-cyan)]/25 bg-black/20 text-[var(--brand-cyan)] transition-colors hover:bg-white/10"
+                        className="grid size-11 place-items-center rounded-full border border-[var(--brand-amber)]/25 bg-black/20 text-[var(--brand-amber)] transition-colors hover:bg-white/10"
                         aria-label={`Voir ${loc.title}`}
                       >
                         →

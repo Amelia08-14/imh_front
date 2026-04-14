@@ -3,14 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
-const navigation = [
-  { label: "LA MAISON DE L'HOMME", href: "/la-maison-de-l-homme" },
-  { label: "LA MAISON DE LA FEMME", href: "/la-maison-de-la-femme" },
-  { label: "FOR MR & MRS", href: "/#decouvrir" },
-  { label: "IN SPA", href: "/#decouvrir" },
-  { label: "OÙ NOUS TROUVER", href: "/#localisation" },
-];
+import { siteNavigation } from "@/lib/site-data";
 
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -33,7 +26,7 @@ export function SiteHeader() {
             <button
               type="button"
               onClick={() => setMenuOpen(true)}
-              className="grid size-11 place-items-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:border-[var(--brand-cyan)]/40 hover:bg-white/10"
+              className="grid size-11 place-items-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:border-[var(--brand-amber)]/40 hover:bg-white/10"
               aria-label="Ouvrir le menu"
             >
               <span className="flex flex-col gap-1">
@@ -63,12 +56,12 @@ export function SiteHeader() {
             />
           </Link>
 
-          <a
-            href="#footer-contact"
+          <Link
+            href="/contact"
             className="inline-flex h-10 items-center rounded-full border border-white/10 bg-white/3 px-5 text-[10px] font-medium tracking-[0.3em] text-white transition-colors hover:border-[var(--brand-amber)]/45 hover:bg-[var(--brand-amber)]/12 sm:px-8"
           >
             RÉSERVER
-          </a>
+          </Link>
         </div>
       </header>
 
@@ -104,7 +97,7 @@ export function SiteHeader() {
             <button
               type="button"
               onClick={() => setMenuOpen(false)}
-              className="grid size-11 place-items-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:border-[var(--brand-cyan)]/40 hover:bg-white/10"
+              className="grid size-11 place-items-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:border-[var(--brand-amber)]/40 hover:bg-white/10"
               aria-label="Fermer le menu"
             >
               ✕
@@ -113,12 +106,12 @@ export function SiteHeader() {
 
           <nav className="mt-10 rounded-[2rem] border border-white/10 bg-black/40 px-6 py-8 shadow-[0_22px_60px_rgba(0,0,0,0.55)]">
             <ul className="space-y-9 text-[0.92rem] tracking-[0.28em] text-white/80">
-              {navigation.map((item) => (
+              {siteNavigation.map((item) => (
                 <li key={item.label}>
                   <Link
                     href={item.href}
                     onClick={() => setMenuOpen(false)}
-                    className="transition-colors hover:text-[var(--brand-cyan)]"
+                    className={`transition-colors ${item.hoverClass}`}
                   >
                     {item.label}
                   </Link>
@@ -127,13 +120,13 @@ export function SiteHeader() {
             </ul>
 
             <div className="mt-9 border-t border-white/10 pt-8">
-              <a
-                href="#footer-contact"
+              <Link
+                href="/contact"
                 onClick={() => setMenuOpen(false)}
                 className="text-lg font-medium tracking-[0.22em] text-[var(--brand-amber)]"
               >
                 CONTACT
-              </a>
+              </Link>
             </div>
           </nav>
         </aside>

@@ -1,18 +1,12 @@
 import Image from "next/image";
+import { ReservationForm } from "@/components/reservation-form";
 
-const services = [
+const bookingServices = [
+  "Service",
   "Coiffure & brushing",
   "Coloration sur-mesure",
   "Soin cheveux & détente",
   "Beauté des mains",
-];
-
-const bookingSteps = [
-  "SERVICE",
-  "RENDEZ-VOUS",
-  "DÉTAILS",
-  "PAIEMENT",
-  "CONFIRMATION",
 ];
 
 const pricingTabs = [
@@ -55,19 +49,19 @@ const experts = [
 export default function MaisonFemmePage() {
   return (
     <div className="min-h-full bg-[var(--brand-ink)] text-white">
-      <div className="pointer-events-none fixed inset-0 opacity-55 [background:radial-gradient(700px_circle_at_18%_12%,rgba(216,150,184,0.16),transparent_60%),radial-gradient(900px_circle_at_82%_28%,rgba(230,181,205,0.08),transparent_60%),radial-gradient(1000px_circle_at_50%_100%,color-mix(in_srgb,var(--brand-slate)_8%,transparent),transparent_60%)]" />
+      <div className="pointer-events-none fixed inset-0 opacity-55 [background:radial-gradient(700px_circle_at_18%_12%,color-mix(in_srgb,var(--brand-femme)_16%,transparent),transparent_60%),radial-gradient(900px_circle_at_82%_28%,color-mix(in_srgb,var(--brand-femme)_8%,white),transparent_60%),radial-gradient(1000px_circle_at_50%_100%,color-mix(in_srgb,var(--brand-slate)_8%,transparent),transparent_60%)]" />
 
       <main className="relative mx-auto w-full max-w-[88rem] px-6 pb-24 pt-32 sm:px-8 sm:pt-36 xl:px-10">
-        <section className="grid gap-12 border-b border-white/8 pb-16 lg:grid-cols-12 lg:items-start">
-          <div className="lg:col-span-6">
-            <div className="flex items-center gap-3 text-[10px] tracking-[0.32em] text-[#d896b8]/90">
-              <span className="inline-block h-px w-10 bg-[#d896b8]/60" />
+        <section className="grid gap-12 border-b border-white/8 pb-16 lg:grid-cols-12 lg:items-center">
+          <div className="lg:col-span-6 lg:self-center">
+            <div className="flex items-center gap-3 text-[10px] tracking-[0.32em] text-[var(--brand-femme)]/90">
+              <span className="inline-block h-px w-10 bg-[var(--brand-femme)]/60" />
               <span>LA MAISON DE LA FEMME</span>
             </div>
 
             <h1 className="mt-6 max-w-xl font-serif text-5xl leading-[0.95] tracking-tight sm:text-7xl">
               Révélez votre
-              <span className="block italic text-[#d896b8]">
+              <span className="block italic text-[var(--brand-femme)]">
                 féminité
               </span>
             </h1>
@@ -81,195 +75,51 @@ export default function MaisonFemmePage() {
             <div className="mt-9 flex flex-wrap items-center gap-4">
               <a
                 href="#tarification"
-                className="inline-flex h-11 items-center rounded-full bg-[#d896b8] px-6 text-[11px] font-medium tracking-[0.24em] text-white transition-colors hover:bg-[#e1abc7]"
+                className="inline-flex h-11 items-center rounded-full bg-[var(--brand-femme)] px-6 text-[11px] font-medium tracking-[0.24em] text-white transition-colors hover:bg-[color:color-mix(in_srgb,var(--brand-femme)_86%,white)]"
               >
                 DÉCOUVRIR
               </a>
               <a
                 href="#expertes"
-                className="inline-flex h-11 items-center gap-3 rounded-full border border-white/10 bg-white/5 px-6 text-[11px] tracking-[0.24em] text-white transition-colors hover:border-[#d896b8]/30 hover:bg-white/8"
+                className="inline-flex h-11 items-center gap-3 rounded-full border border-white/10 bg-white/5 px-6 text-[11px] tracking-[0.24em] text-white transition-colors hover:border-[var(--brand-femme)]/30 hover:bg-white/8"
               >
                 NOS EXPERTES
-                <span className="grid size-7 place-items-center rounded-full border border-[#d896b8]/30 text-[#d896b8]">
+                <span className="grid size-7 place-items-center rounded-full border border-[var(--brand-femme)]/30 text-[var(--brand-femme)]">
                   →
                 </span>
               </a>
             </div>
           </div>
 
-          <div className="lg:col-span-6">
-            <div className="ml-auto max-w-[42rem] rounded-[2.25rem] border border-white/10 bg-white/[0.03] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.4)] backdrop-blur-sm sm:p-8">
-              <div className="relative flex items-center justify-between gap-3 overflow-hidden pb-6">
-                <div className="absolute left-0 right-0 top-2 h-px bg-white/8" />
-                {bookingSteps.map((step, index) => (
-                  <div
-                    key={step}
-                    className="relative z-10 flex flex-col items-center gap-3"
-                  >
-                    <span
-                      className={[
-                        "grid size-4 place-items-center rounded-full border text-[8px]",
-                        index === 0
-                          ? "border-[#d896b8] bg-[#d896b8] text-white"
-                          : "border-white/10 bg-[var(--brand-ink)] text-transparent",
-                      ].join(" ")}
-                    >
-                      •
-                    </span>
-                    <span
-                      className={[
-                        "text-[10px] tracking-[0.2em]",
-                        index === 0
-                          ? "text-[#d896b8]"
-                          : "text-white/30",
-                      ].join(" ")}
-                    >
-                      {`${index + 1}. ${step}`}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-2">
-                <div className="font-serif text-[2.6rem] leading-none tracking-tight">
-                  Choix des services
-                </div>
-              </div>
-
-              <div className="mt-8 space-y-5">
-                <div className="relative">
-                  <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-[var(--brand-slate)]">
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M12 21s7-4.4 7-11a7 7 0 10-14 0c0 6.6 7 11 7 11z"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                      />
-                      <path
-                        d="M12 13.5a3.5 3.5 0 110-7 3.5 3.5 0 010 7z"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                      />
-                    </svg>
-                  </span>
-                  <select className="h-16 w-full appearance-none rounded-[1.4rem] border border-white/10 bg-black/20 px-14 pr-14 text-base text-[var(--brand-slate)] outline-none">
-                    <option>Maison IN (Location)</option>
-                  </select>
-                  <span className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-[var(--brand-slate)]">
-                    ˅
-                  </span>
-                </div>
-
-                <div className="relative">
-                  <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-[var(--brand-slate)]">
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M4 7h6M4 17h6M14 7h6M14 17h6M9 4l6 16"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                  </span>
-                  <select className="h-16 w-full appearance-none rounded-[1.4rem] border border-white/10 bg-black/20 px-14 pr-14 text-base text-[var(--brand-slate)] outline-none">
-                    <option>Service</option>
-                    {services.map((service) => (
-                      <option key={service}>{service}</option>
-                    ))}
-                  </select>
-                  <span className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-[var(--brand-slate)]">
-                    ˅
-                  </span>
-                </div>
-
-                <div className="grid gap-5 md:grid-cols-2">
-                  <div className="relative">
-                    <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-[var(--brand-slate)]">
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                      >
-                        <path
-                          d="M12 12a3 3 0 100-6 3 3 0 000 6z"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                        />
-                        <path
-                          d="M5 20c1.7-3 4-4.5 7-4.5S17.3 17 19 20"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                        />
-                      </svg>
-                    </span>
-                    <select className="h-16 w-full appearance-none rounded-[1.4rem] border border-white/10 bg-black/20 px-14 pr-14 text-base text-[var(--brand-slate)] outline-none">
-                      <option>Expert: Peu importe</option>
-                    </select>
-                    <span className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-[var(--brand-slate)]">
-                      ˅
-                    </span>
-                  </div>
-
-                  <div className="relative">
-                    <span className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-[var(--brand-slate)]">
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                      >
-                        <circle
-                          cx="12"
-                          cy="12"
-                          r="8"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                        />
-                        <path
-                          d="M12 8v4l3 2"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                        />
-                      </svg>
-                    </span>
-                    <select className="h-16 w-full appearance-none rounded-[1.4rem] border border-white/10 bg-black/20 px-14 pr-14 text-base text-[var(--brand-slate)] outline-none">
-                      <option>Date & Heure</option>
-                    </select>
-                    <span className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-[var(--brand-slate)]">
-                      ˅
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <button
-                type="button"
-                className="mt-8 inline-flex h-14 w-full items-center justify-center rounded-[1.25rem] bg-white px-6 text-[11px] font-medium tracking-[0.24em] text-black transition-colors hover:bg-white/90"
-              >
-                VÉRIFIER LES DISPONIBILITÉS
-              </button>
-            </div>
+          <div className="lg:col-span-6 lg:self-center">
+            <ReservationForm
+              accent="#b4918f"
+              title="Choix des services"
+              subtitle="RÉSERVATION PERSONNALISÉE"
+              locations={[
+                "Maison IN Hydra",
+                "Maison IN Oran",
+              ]}
+              services={bookingServices}
+              assistants={[
+                "Experte : Peu importe",
+                "Sarah M.",
+                "Amira R.",
+                "Lina K.",
+              ]}
+              schedule={[
+                {
+                  value: "2026-03-29",
+                  label: "Samedi 29/03/2026",
+                  times: ["10:00", "14:30", "18:00"],
+                },
+                {
+                  value: "2026-03-30",
+                  label: "Dimanche 30/03/2026",
+                  times: ["09:30", "13:30", "17:30"],
+                },
+              ]}
+            />
           </div>
         </section>
 
@@ -289,8 +139,8 @@ export default function MaisonFemmePage() {
           </div>
 
           <div className="lg:col-span-7 lg:pl-10">
-            <div className="flex items-center gap-3 text-[10px] tracking-[0.32em] text-[#d896b8]/90">
-              <span className="inline-block h-px w-10 bg-[#d896b8]/60" />
+            <div className="flex items-center gap-3 text-[10px] tracking-[0.32em] text-[var(--brand-femme)]/90">
+              <span className="inline-block h-px w-10 bg-[var(--brand-femme)]/60" />
               <span>UN UNIVERS D&apos;EXCELLENCE</span>
             </div>
 
@@ -309,7 +159,7 @@ export default function MaisonFemmePage() {
               <span className="grid size-9 place-items-center rounded-full border border-white/10 bg-white/5 text-[var(--brand-slate)]">
                 ←
               </span>
-              <span className="grid size-9 place-items-center rounded-full border border-[#d896b8]/35 bg-[#d896b8]/10 text-[#d896b8]">
+              <span className="grid size-9 place-items-center rounded-full border border-[var(--brand-femme)]/35 bg-[var(--brand-femme)]/10 text-[var(--brand-femme)]">
                 →
               </span>
             </div>
@@ -321,8 +171,8 @@ export default function MaisonFemmePage() {
           className="border-t border-white/8 py-20"
         >
           <div className="mx-auto max-w-4xl text-center">
-            <div className="flex items-center justify-center gap-3 text-[10px] tracking-[0.32em] text-[#d896b8]/90">
-              <span className="inline-block h-px w-10 bg-[#d896b8]/60" />
+            <div className="flex items-center justify-center gap-3 text-[10px] tracking-[0.32em] text-[var(--brand-femme)]/90">
+              <span className="inline-block h-px w-10 bg-[var(--brand-femme)]/60" />
               <span>NOS PRESTATIONS</span>
             </div>
             <h2 className="mt-6 font-serif text-4xl tracking-tight sm:text-5xl">
@@ -343,7 +193,7 @@ export default function MaisonFemmePage() {
                   className={[
                     "rounded-full px-4 py-2 text-[10px] tracking-[0.24em] transition-colors",
                     index === 0
-                      ? "bg-[#d896b8] text-white"
+                      ? "bg-[var(--brand-femme)] text-white"
                       : "border border-white/10 bg-white/4 text-[var(--brand-slate)] hover:text-white",
                   ].join(" ")}
                 >
@@ -366,7 +216,7 @@ export default function MaisonFemmePage() {
                       {row.subtitle}
                     </div>
                   </div>
-                  <div className="text-sm text-[#d896b8]">
+                  <div className="text-sm text-[var(--brand-femme)]">
                     {row.price}
                   </div>
                 </div>
@@ -377,8 +227,8 @@ export default function MaisonFemmePage() {
 
         <section id="expertes" className="border-t border-white/8 py-20">
           <div className="mx-auto max-w-3xl text-center">
-            <div className="flex items-center justify-center gap-3 text-[10px] tracking-[0.32em] text-[#d896b8]/90">
-              <span className="inline-block h-px w-10 bg-[#d896b8]/60" />
+            <div className="flex items-center justify-center gap-3 text-[10px] tracking-[0.32em] text-[var(--brand-femme)]/90">
+              <span className="inline-block h-px w-10 bg-[var(--brand-femme)]/60" />
               <span>L&apos;EXCELLENCE</span>
             </div>
             <h2 className="mt-6 font-serif text-4xl tracking-tight sm:text-5xl">
