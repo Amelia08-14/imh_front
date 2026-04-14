@@ -87,11 +87,6 @@ export const siteNavigation = [
     href: "/#localisation",
     hoverClass: "hover:text-[var(--brand-amber)]",
   },
-  {
-    label: "CONTACT",
-    href: "/contact",
-    hoverClass: "hover:text-[var(--brand-amber)]",
-  },
 ] as const;
 
 export const footerGroups = [
