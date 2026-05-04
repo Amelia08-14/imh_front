@@ -23,6 +23,7 @@ type ReservationFormProps = {
   accent: string;
   title: string;
   subtitle: string;
+  universe?: "homme" | "femme" | "mrmrs" | "spa";
   salons: SelectOption[];
   services: SelectOption[];
   assistants: SelectOption[];
@@ -163,6 +164,7 @@ export function ReservationForm({
   accent,
   title,
   subtitle,
+  universe,
   salons,
   services,
   assistants,
@@ -224,9 +226,14 @@ export function ReservationForm({
         const catalog = await imhPublicCatalogForSalon(selectedSalonId);
         if (cancelled) return;
 
+        const filteredServices =
+          universe === "spa"
+            ? catalog.services.filter((s) => s.isInSpa === true)
+            : catalog.services.filter((s) => s.isInSpa !== true);
+
         const nextServices: SelectOption[] = [
           { id: "", label: "Service" },
-          ...catalog.services.map((s) => ({ id: s.id, label: s.name })),
+          ...filteredServices.map((s) => ({ id: s.id, label: s.name })),
         ];
         const nextAssistants: SelectOption[] = [
           { id: "", label: "Assistant : Peu importe" },
@@ -236,7 +243,7 @@ export function ReservationForm({
         setServiceOptions(nextServices);
         setAssistantOptions(nextAssistants);
 
-        const nextDefaultServiceId = catalog.services[0]?.id ?? "";
+        const nextDefaultServiceId = filteredServices[0]?.id ?? "";
         setSelectedServiceId(nextDefaultServiceId);
         setSelectedAssistantId("");
         setStepIndex(0);
@@ -256,7 +263,7 @@ export function ReservationForm({
     return () => {
       cancelled = true;
     };
-  }, [selectedSalonId]);
+  }, [selectedSalonId, universe]);
 
   useEffect(() => {
     let cancelled = false;

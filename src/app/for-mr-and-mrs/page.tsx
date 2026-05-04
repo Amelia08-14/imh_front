@@ -75,6 +75,7 @@ export default function ForMrAndMrsPage() {
               accent="#897646"
               title="Mon rendez-vous"
               subtitle="CHOIX DES SERVICES"
+              universe="mrmrs"
               locations={bookingLocations}
             />
           </div>

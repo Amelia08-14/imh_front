@@ -9,12 +9,15 @@ import {
   imhPublicSalons,
 } from "@/lib/imh-api";
 
+type ReservationUniverse = Salon["category"] | "spa";
+
 type ReservationFormContainerProps = {
   accent: string;
   title: string;
   subtitle: string;
   locations: string[];
   ctaLabel?: string;
+  universe?: ReservationUniverse;
 };
 
 export async function ReservationFormContainer({
@@ -23,6 +26,7 @@ export async function ReservationFormContainer({
   subtitle,
   locations,
   ctaLabel,
+  universe,
 }: ReservationFormContainerProps) {
   void locations;
   let services: Service[] = [];
@@ -32,13 +36,21 @@ export async function ReservationFormContainer({
   let defaultSalonId = "";
   try {
     const salonsRes = await imhPublicSalons();
-    salons = salonsRes.items;
+    const allSalons = salonsRes.items;
+    salons =
+      universe && universe !== "spa"
+        ? allSalons.filter((s) => s.category === universe)
+        : allSalons;
     defaultSalonId = salons[0]?.id ?? "";
 
     const catalog = defaultSalonId
       ? await imhPublicCatalogForSalon(defaultSalonId)
       : null;
-    services = catalog?.services ?? [];
+    const rawServices = catalog?.services ?? [];
+    services =
+      universe === "spa"
+        ? rawServices.filter((s) => s.isInSpa === true)
+        : rawServices.filter((s) => s.isInSpa !== true);
     barbers = catalog?.barbers ?? [];
     const defaultServiceId = services[0]?.id ?? "";
     if (defaultSalonId && defaultServiceId) {
@@ -64,6 +76,7 @@ export async function ReservationFormContainer({
       accent={accent}
       title={title}
       subtitle={subtitle}
+      universe={universe}
       salons={[
         { id: "", label: "Salon" },
         ...salons.map((s) => ({ id: s.id, label: s.name })),

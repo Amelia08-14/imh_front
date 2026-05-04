@@ -115,6 +115,7 @@ export default function MaisonFemmePage() {
               accent="#b4918f"
               title="Choix des services"
               subtitle="RÉSERVATION PERSONNALISÉE"
+              universe="femme"
               locations={[
                 "Maison IN Hydra",
                 "Maison IN Oran",

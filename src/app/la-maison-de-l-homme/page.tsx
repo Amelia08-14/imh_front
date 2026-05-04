@@ -84,6 +84,7 @@ export default function MaisonHommePage() {
               accent="#f6f4ef"
               title="Choix des services"
               subtitle="RÉSERVATION PERSONNALISÉE"
+              universe="homme"
               locations={[
                 "Maison IN El Biar",
                 "Maison IN El Mouradia",

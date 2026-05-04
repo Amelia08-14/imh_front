@@ -96,6 +96,7 @@ export default function InSpaPage() {
               accent="#01afc6"
               title="Mon rendez-vous"
               subtitle="CHOIX DES SERVICES"
+              universe="spa"
               locations={bookingLocations}
             />
           </div>
