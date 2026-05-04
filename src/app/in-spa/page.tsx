@@ -1,23 +1,10 @@
 import Image from "next/image";
-import { ReservationForm } from "@/components/reservation-form";
+import type { CSSProperties } from "react";
+import { ReservationFormContainer } from "@/components/reservation-form-container";
 
 const bookingLocations = [
   "IN SPA El Biar",
   "IN SPA Oran",
-];
-
-const bookingServices = [
-  "Service",
-  "Rituel Hammam Traditionnel",
-  "Massage Relaxant Signature",
-  "Soin Visage Éclat Oriental",
-  "Forfait Évasion Royale",
-];
-
-const assistants = [
-  "Thérapeute : Peu importe",
-  "Spa Manager",
-  "Équipe bien-être",
 ];
 
 const careRows = [
@@ -45,8 +32,24 @@ const careRows = [
 
 export default function InSpaPage() {
   return (
-    <div className="min-h-full bg-[var(--brand-ink)] text-white">
-      <div className="pointer-events-none fixed inset-0 opacity-55 [background:radial-gradient(700px_circle_at_18%_12%,color-mix(in_srgb,var(--brand-spa)_15%,transparent),transparent_60%),radial-gradient(900px_circle_at_82%_28%,color-mix(in_srgb,var(--brand-cyan)_10%,transparent),transparent_60%),radial-gradient(1000px_circle_at_50%_100%,color-mix(in_srgb,var(--brand-slate)_8%,transparent),transparent_60%)]" />
+    <div
+      className="min-h-full bg-[var(--brand-ink)] text-white"
+      style={
+        {
+          "--page-accent": "var(--brand-spa)",
+          "--page-accent-2": "white",
+          "--page-accent-rgb": "1, 175, 198",
+          "--page-accent-2-rgb": "255, 255, 255",
+        } as CSSProperties
+      }
+    >
+      <div
+        className="pointer-events-none fixed inset-0 opacity-60"
+        style={{
+          background:
+            "radial-gradient(760px circle at 18% 12%, rgba(var(--page-accent-rgb), 0.22), transparent 58%), radial-gradient(980px circle at 82% 28%, rgba(var(--page-accent-2-rgb), 0.1), transparent 62%), radial-gradient(1100px circle at 50% 100%, rgba(113, 124, 125, 0.12), transparent 60%)",
+        }}
+      />
 
       <main className="relative mx-auto w-full max-w-[88rem] px-6 pb-24 pt-32 sm:px-8 sm:pt-36 xl:px-10">
         <section className="grid gap-12 border-b border-white/8 pb-16 lg:grid-cols-12 lg:items-center">
@@ -56,14 +59,24 @@ export default function InSpaPage() {
               <span>IN SPA</span>
             </div>
 
+            <div className="mt-7 relative h-14 w-56 sm:h-16 sm:w-72">
+              <Image
+                src="/logos/inspa.png"
+                alt="IN SPA"
+                fill
+                className="object-contain object-left"
+                priority
+              />
+            </div>
+
             <h1 className="mt-6 max-w-xl font-serif text-5xl leading-[0.95] tracking-tight sm:text-7xl">
               Sublimer
-              <span className="block italic text-[var(--brand-spa)]">
+              <span className="block italic text-luxe-accent">
                 le corps
               </span>
             </h1>
 
-            <p className="mt-6 max-w-lg text-sm leading-7 text-[var(--brand-slate)]">
+            <p className="mt-6 max-w-lg text-sm leading-7 text-white/70">
               Personnalisez vos expériences avec la réservation en ligne et
               découvrez un univers pensé pour les rituels de détente et de soin.
             </p>
@@ -71,7 +84,7 @@ export default function InSpaPage() {
             <div className="mt-9">
               <a
                 href="#carte"
-                className="inline-flex h-11 items-center rounded-full bg-[var(--brand-spa)] px-6 text-[11px] font-medium tracking-[0.24em] text-black transition-colors hover:bg-[color:color-mix(in_srgb,var(--brand-spa)_82%,white)]"
+                className="btn-frame inline-flex h-11 items-center rounded-full px-6 text-[11px] font-medium tracking-[0.24em] shadow-[0_18px_50px_rgba(0,0,0,0.45)] transition-transform hover:-translate-y-0.5"
               >
                 DÉCOUVRIR
               </a>
@@ -79,25 +92,11 @@ export default function InSpaPage() {
           </div>
 
           <div className="lg:col-span-6 lg:self-center">
-            <ReservationForm
-              accent="#00b0c7"
+            <ReservationFormContainer
+              accent="#01afc6"
               title="Mon rendez-vous"
               subtitle="CHOIX DES SERVICES"
               locations={bookingLocations}
-              services={bookingServices}
-              assistants={assistants}
-              schedule={[
-                {
-                  value: "2026-03-24",
-                  label: "Mardi 24/03/2026",
-                  times: ["09:30", "13:00", "22:30"],
-                },
-                {
-                  value: "2026-03-25",
-                  label: "Mercredi 25/03/2026",
-                  times: ["10:30", "15:00", "20:30"],
-                },
-              ]}
             />
           </div>
         </section>
@@ -125,7 +124,7 @@ export default function InSpaPage() {
             <h2 className="mt-5 max-w-md font-serif text-4xl leading-[0.98] tracking-tight sm:text-6xl">
               IN SPA
             </h2>
-            <p className="mt-6 max-w-xl text-sm leading-8 text-[var(--brand-slate)]">
+            <p className="mt-6 max-w-xl text-sm leading-8 text-white/70">
               À la croisée des dernières techniques dans le monde de la beauté
               et du bien-être, entrez dans un cadre orienté vers le IN SPA pour
               vous ressourcer profondément.
@@ -139,7 +138,7 @@ export default function InSpaPage() {
                     "grid size-9 place-items-center rounded-full border bg-white/5 text-sm",
                     index === 2
                       ? "border-[var(--brand-spa)]/35 text-[var(--brand-spa)]"
-                      : "border-white/10 text-[var(--brand-slate)]",
+                      : "border-white/10 text-white/60",
                   ].join(" ")}
                 >
                   {icon}
@@ -154,7 +153,7 @@ export default function InSpaPage() {
             <h2 className="font-serif text-4xl tracking-tight sm:text-5xl">
               Notre carte des soins
             </h2>
-            <p className="mt-4 text-sm leading-7 text-[var(--brand-slate)]">
+            <p className="mt-4 text-sm leading-7 text-white/70">
               Laissez-vous transporter par nos rituels de soin exclusifs alliant
               traditions orientales et techniques de pointe.
             </p>
@@ -176,7 +175,7 @@ export default function InSpaPage() {
                       <div className="font-serif text-2xl tracking-tight">
                         {row.title}
                       </div>
-                      <div className="mt-1 text-[11px] tracking-[0.2em] text-[var(--brand-slate)]">
+                      <div className="mt-1 text-[11px] tracking-[0.2em] text-white/60">
                         {row.subtitle}
                       </div>
                     </div>

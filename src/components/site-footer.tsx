@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { footerGroups, socialLinks } from "@/lib/site-data";
@@ -7,25 +8,39 @@ export function SiteFooter() {
     <footer
       id="footer-contact"
       className="relative mt-28 border-t border-white/10 bg-[var(--brand-ink)]"
+      style={
+        {
+          "--page-accent": "var(--brand-slate)",
+          "--page-accent-rgb": "113, 124, 125",
+          "--page-accent-2-rgb": "255, 255, 255",
+        } as CSSProperties
+      }
     >
+      <div
+        className="pointer-events-none absolute inset-0 opacity-55"
+        style={{
+          background:
+            "radial-gradient(650px circle at 18% 0%, rgba(var(--page-accent-rgb), 0.16), transparent 62%), radial-gradient(900px circle at 82% 18%, rgba(var(--page-accent-2-rgb), 0.07), transparent 62%), radial-gradient(1100px circle at 50% 100%, rgba(var(--page-accent-rgb), 0.1), transparent 60%)",
+        }}
+      />
       <div className="mx-auto grid w-full max-w-[88rem] gap-12 px-6 py-16 sm:px-8 lg:grid-cols-[1.2fr_1fr_1fr_1fr] xl:px-10">
         <div>
           <Link href="/" className="relative block h-12 w-28">
             <Image
-              src="/IMH%20BLANC.png"
-              alt="IN Beauty & Health"
+              src="/logos/La%20Maison%20Beauty%20%26%20Health.png"
+              alt="La Maison Beauty & Health"
               fill
               className="object-contain object-left"
             />
           </Link>
-          <p className="mt-6 max-w-sm text-sm leading-8 text-[var(--brand-slate)]">
+          <p className="mt-6 max-w-sm text-sm leading-8 text-white/70">
             Le premier réseau de maisons de beauté et de bien-être haut de
             gamme en Algérie. L&apos;excellence et le luxe au service de votre
             sérénité.
           </p>
 
           <div className="mt-8">
-            <div className="text-xs tracking-[0.35em] text-[var(--brand-slate)]">
+            <div className="text-xs tracking-[0.35em] text-white/60">
               SUIVEZ-NOUS
             </div>
             <div className="mt-5 flex items-center gap-3">
@@ -34,7 +49,7 @@ export function SiteFooter() {
                   key={link.label}
                   href={link.href}
                   aria-label={link.label}
-                  className="grid size-11 place-items-center rounded-full border border-white/10 text-sm text-[var(--brand-slate)] transition-colors hover:border-[var(--brand-amber)]/50 hover:text-[var(--brand-amber)]"
+                  className="grid size-11 place-items-center rounded-full border border-white/10 text-sm text-white/60 transition-colors hover:border-[var(--page-accent)]/50 hover:text-[var(--page-accent)]"
                 >
                   {link.short}
                 </a>
@@ -45,11 +60,11 @@ export function SiteFooter() {
 
         {footerGroups.map((group) => (
           <div key={group.title}>
-            <div className="flex items-center gap-3 text-xs tracking-[0.32em] text-[var(--brand-amber)]">
-              <span className="inline-block h-px w-6 bg-[var(--brand-amber)]/60" />
+            <div className="flex items-center gap-3 text-xs tracking-[0.32em] text-[var(--page-accent)]">
+              <span className="inline-block h-px w-6 bg-[var(--page-accent)]/60" />
               <span>{group.title}</span>
             </div>
-            <ul className="mt-7 space-y-4 text-[var(--brand-slate)]">
+            <ul className="mt-7 space-y-4 text-white/70">
               {group.links.map((link) => (
                 <li key={link.label}>
                   <Link
@@ -65,7 +80,7 @@ export function SiteFooter() {
         ))}
 
         <div>
-          <div className="space-y-5 text-[var(--brand-slate)]">
+          <div className="space-y-5 text-white/70">
             <div className="flex items-start gap-4">
               <span className="grid size-10 place-items-center rounded-full border border-white/10">
                 <svg
@@ -157,7 +172,7 @@ export function SiteFooter() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="mx-auto flex w-full max-w-[88rem] flex-col gap-4 px-6 py-6 text-xs tracking-[0.18em] text-[var(--brand-slate)] sm:flex-row sm:items-center sm:justify-between sm:px-8 xl:px-10">
+        <div className="mx-auto flex w-full max-w-[88rem] flex-col gap-4 px-6 py-6 text-xs tracking-[0.18em] text-white/60 sm:flex-row sm:items-center sm:justify-between sm:px-8 xl:px-10">
           <div>© 2026 IN BEAUTY &amp; HEALTH. TOUS DROITS RÉSERVÉS.</div>
           <div className="flex flex-wrap items-center gap-6">
             <a href="#" className="transition-colors hover:text-white/60">

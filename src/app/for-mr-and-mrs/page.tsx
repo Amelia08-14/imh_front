@@ -1,13 +1,6 @@
 import Image from "next/image";
-import { ReservationForm } from "@/components/reservation-form";
-
-const bookingServices = [
-  "Service",
-  "Rituel duo premium",
-  "Package hôtel signature",
-  "Soin duo & détente",
-  "Expérience sur demande",
-];
+import type { CSSProperties } from "react";
+import { ReservationFormContainer } from "@/components/reservation-form-container";
 
 const bookingLocations = [
   "Maison IN Hôtel El Aurassi",
@@ -15,16 +8,26 @@ const bookingLocations = [
   "Maison IN Hôtel privé",
 ];
 
-const assistants = [
-  "Assistant : Peu importe",
-  "Équipe Suite Prestige",
-  "Équipe Signature Duo",
-];
-
 export default function ForMrAndMrsPage() {
   return (
-    <div className="min-h-full bg-[var(--brand-ink)] text-white">
-      <div className="pointer-events-none fixed inset-0 opacity-55 [background:radial-gradient(700px_circle_at_18%_12%,color-mix(in_srgb,var(--brand-mrmrs)_16%,transparent),transparent_60%),radial-gradient(900px_circle_at_82%_28%,color-mix(in_srgb,var(--brand-amber)_8%,transparent),transparent_60%),radial-gradient(1000px_circle_at_50%_100%,color-mix(in_srgb,var(--brand-slate)_8%,transparent),transparent_60%)]" />
+    <div
+      className="min-h-full bg-[var(--brand-ink)] text-white"
+      style={
+        {
+          "--page-accent": "var(--brand-mrmrs)",
+          "--page-accent-2": "white",
+          "--page-accent-rgb": "137, 118, 70",
+          "--page-accent-2-rgb": "255, 255, 255",
+        } as CSSProperties
+      }
+    >
+      <div
+        className="pointer-events-none fixed inset-0 opacity-60"
+        style={{
+          background:
+            "radial-gradient(760px circle at 18% 12%, rgba(var(--page-accent-rgb), 0.22), transparent 58%), radial-gradient(980px circle at 82% 28%, rgba(var(--page-accent-2-rgb), 0.1), transparent 62%), radial-gradient(1100px circle at 50% 100%, rgba(113, 124, 125, 0.12), transparent 60%)",
+        }}
+      />
 
       <main className="relative mx-auto w-full max-w-[88rem] px-6 pb-24 pt-32 sm:px-8 sm:pt-36 xl:px-10">
         <section className="grid gap-12 border-b border-white/8 pb-16 lg:grid-cols-12 lg:items-center">
@@ -34,14 +37,24 @@ export default function ForMrAndMrsPage() {
               <span>FOR MR &amp; MRS</span>
             </div>
 
+            <div className="mt-7 relative h-14 w-72 sm:h-16 sm:w-[22rem]">
+              <Image
+                src="/logos/La%20Maison%20MR%20%26%20MRS.png"
+                alt="La Maison MR & MRS"
+                fill
+                className="object-contain object-left"
+                priority
+              />
+            </div>
+
             <h1 className="mt-6 max-w-xl font-serif text-5xl leading-[0.95] tracking-tight sm:text-7xl">
               La beauté
-              <span className="block italic text-[var(--brand-mrmrs)]">
+              <span className="block italic text-luxe-accent">
                 sans frontières
               </span>
             </h1>
 
-            <p className="mt-6 max-w-lg text-sm leading-7 text-[var(--brand-slate)]">
+            <p className="mt-6 max-w-lg text-sm leading-7 text-white/70">
               Personnalisez votre expérience avec la réservation en ligne dans
               un univers pensé pour elle et lui, entre élégance, bien-être et
               services haut de gamme.
@@ -50,7 +63,7 @@ export default function ForMrAndMrsPage() {
             <div className="mt-9">
               <a
                 href="#decouvrir"
-                className="inline-flex h-11 items-center rounded-full bg-[var(--brand-mrmrs)] px-6 text-[11px] font-medium tracking-[0.24em] text-white transition-colors hover:bg-[color:color-mix(in_srgb,var(--brand-mrmrs)_88%,white)]"
+                className="btn-frame inline-flex h-11 items-center rounded-full px-6 text-[11px] font-medium tracking-[0.24em] shadow-[0_18px_50px_rgba(0,0,0,0.45)] transition-transform hover:-translate-y-0.5"
               >
                 DÉCOUVRIR
               </a>
@@ -58,25 +71,11 @@ export default function ForMrAndMrsPage() {
           </div>
 
           <div className="lg:col-span-6 lg:self-center">
-            <ReservationForm
-              accent="#ff4f38"
+            <ReservationFormContainer
+              accent="#897646"
               title="Mon rendez-vous"
               subtitle="CHOIX DES SERVICES"
               locations={bookingLocations}
-              services={bookingServices}
-              assistants={assistants}
-              schedule={[
-                {
-                  value: "2026-03-27",
-                  label: "Jeudi 27/03/2026",
-                  times: ["08:00", "19:00", "22:30"],
-                },
-                {
-                  value: "2026-03-28",
-                  label: "Vendredi 28/03/2026",
-                  times: ["09:00", "18:30", "21:30"],
-                },
-              ]}
             />
           </div>
         </section>
@@ -107,7 +106,7 @@ export default function ForMrAndMrsPage() {
             <h2 className="mt-5 max-w-lg font-serif text-4xl leading-[0.98] tracking-tight sm:text-6xl">
               La Maison for MR &amp; MRS
             </h2>
-            <p className="mt-6 max-w-xl text-sm leading-8 text-[var(--brand-slate)]">
+            <p className="mt-6 max-w-xl text-sm leading-8 text-white/70">
               Une gamme dédiée spécialement aux hôtels. Des services pour Elle
               &amp; Lui dans un cadre fastueux, où l&apos;élégance se conjugue au
               bien-être absolu pour une expérience inoubliable.
@@ -121,7 +120,7 @@ export default function ForMrAndMrsPage() {
                     "grid size-9 place-items-center rounded-full border bg-white/5 text-sm",
                     index === 2
                       ? "border-[var(--brand-mrmrs)]/35 text-[var(--brand-mrmrs)]"
-                      : "border-white/10 text-[var(--brand-slate)]",
+                      : "border-white/10 text-white/60",
                   ].join(" ")}
                 >
                   {icon}

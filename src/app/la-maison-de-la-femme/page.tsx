@@ -1,13 +1,6 @@
 import Image from "next/image";
-import { ReservationForm } from "@/components/reservation-form";
-
-const bookingServices = [
-  "Service",
-  "Coiffure & brushing",
-  "Coloration sur-mesure",
-  "Soin cheveux & détente",
-  "Beauté des mains",
-];
+import type { CSSProperties } from "react";
+import { ReservationFormContainer } from "@/components/reservation-form-container";
 
 const pricingTabs = [
   "Coiffures",
@@ -48,25 +41,51 @@ const experts = [
 
 export default function MaisonFemmePage() {
   return (
-    <div className="min-h-full bg-[var(--brand-ink)] text-white">
-      <div className="pointer-events-none fixed inset-0 opacity-55 [background:radial-gradient(700px_circle_at_18%_12%,color-mix(in_srgb,var(--brand-femme)_16%,transparent),transparent_60%),radial-gradient(900px_circle_at_82%_28%,color-mix(in_srgb,var(--brand-femme)_8%,white),transparent_60%),radial-gradient(1000px_circle_at_50%_100%,color-mix(in_srgb,var(--brand-slate)_8%,transparent),transparent_60%)]" />
+    <div
+      className="min-h-full bg-[var(--brand-ink)] text-white"
+      style={
+        {
+          "--page-accent": "var(--brand-femme)",
+          "--page-accent-2": "var(--brand-amber)",
+          "--page-accent-rgb": "180, 145, 143",
+          "--page-accent-2-rgb": "182, 107, 0",
+        } as CSSProperties
+      }
+    >
+      <div
+        className="pointer-events-none fixed inset-0 opacity-60"
+        style={{
+          background:
+            "radial-gradient(760px circle at 18% 12%, rgba(var(--page-accent-rgb), 0.24), transparent 56%), radial-gradient(980px circle at 82% 28%, rgba(var(--page-accent-2-rgb), 0.12), transparent 62%), radial-gradient(1100px circle at 50% 100%, rgba(113, 124, 125, 0.12), transparent 60%)",
+        }}
+      />
 
       <main className="relative mx-auto w-full max-w-[88rem] px-6 pb-24 pt-32 sm:px-8 sm:pt-36 xl:px-10">
         <section className="grid gap-12 border-b border-white/8 pb-16 lg:grid-cols-12 lg:items-center">
           <div className="lg:col-span-6 lg:self-center">
-            <div className="flex items-center gap-3 text-[10px] tracking-[0.32em] text-[var(--brand-femme)]/90">
-              <span className="inline-block h-px w-10 bg-[var(--brand-femme)]/60" />
+            <div className="flex items-center gap-3 text-[10px] tracking-[0.32em] text-[var(--page-accent)]/90">
+              <span className="inline-block h-px w-10 bg-[var(--page-accent)]/60" />
               <span>LA MAISON DE LA FEMME</span>
+            </div>
+
+            <div className="mt-7 relative h-14 w-72 sm:h-16 sm:w-[22rem]">
+              <Image
+                src="/logos/La%20Maison%20de%20la%20femme%20.png"
+                alt="La Maison de la Femme"
+                fill
+                className="object-contain object-left"
+                priority
+              />
             </div>
 
             <h1 className="mt-6 max-w-xl font-serif text-5xl leading-[0.95] tracking-tight sm:text-7xl">
               Révélez votre
-              <span className="block italic text-[var(--brand-femme)]">
+              <span className="block italic text-luxe-accent">
                 féminité
               </span>
             </h1>
 
-            <p className="mt-6 max-w-lg text-sm leading-7 text-[var(--brand-slate)]">
+            <p className="mt-6 max-w-lg text-sm leading-7 text-white/70">
               La première franchise de soins et d&apos;instituts au féminin.
               Plongez dans un univers où la coiffure, l&apos;esthétique et le
               bien-être prennent soin de vous.
@@ -75,16 +94,16 @@ export default function MaisonFemmePage() {
             <div className="mt-9 flex flex-wrap items-center gap-4">
               <a
                 href="#tarification"
-                className="inline-flex h-11 items-center rounded-full bg-[var(--brand-femme)] px-6 text-[11px] font-medium tracking-[0.24em] text-white transition-colors hover:bg-[color:color-mix(in_srgb,var(--brand-femme)_86%,white)]"
+                className="btn-frame inline-flex h-11 items-center rounded-full px-6 text-[11px] font-medium tracking-[0.24em] shadow-[0_18px_50px_rgba(0,0,0,0.45)] transition-transform hover:-translate-y-0.5"
               >
                 DÉCOUVRIR
               </a>
               <a
                 href="#expertes"
-                className="inline-flex h-11 items-center gap-3 rounded-full border border-white/10 bg-white/5 px-6 text-[11px] tracking-[0.24em] text-white transition-colors hover:border-[var(--brand-femme)]/30 hover:bg-white/8"
+                className="btn-luxe-outline inline-flex h-11 items-center gap-3 rounded-full px-6 text-[11px] tracking-[0.24em] text-white transition-colors hover:bg-white/8"
               >
                 NOS EXPERTES
-                <span className="grid size-7 place-items-center rounded-full border border-[var(--brand-femme)]/30 text-[var(--brand-femme)]">
+                <span className="grid size-7 place-items-center rounded-full border border-[var(--page-accent)]/30 text-luxe-accent">
                   →
                 </span>
               </a>
@@ -92,32 +111,13 @@ export default function MaisonFemmePage() {
           </div>
 
           <div className="lg:col-span-6 lg:self-center">
-            <ReservationForm
+            <ReservationFormContainer
               accent="#b4918f"
               title="Choix des services"
               subtitle="RÉSERVATION PERSONNALISÉE"
               locations={[
                 "Maison IN Hydra",
                 "Maison IN Oran",
-              ]}
-              services={bookingServices}
-              assistants={[
-                "Experte : Peu importe",
-                "Sarah M.",
-                "Amira R.",
-                "Lina K.",
-              ]}
-              schedule={[
-                {
-                  value: "2026-03-29",
-                  label: "Samedi 29/03/2026",
-                  times: ["10:00", "14:30", "18:00"],
-                },
-                {
-                  value: "2026-03-30",
-                  label: "Dimanche 30/03/2026",
-                  times: ["09:30", "13:30", "17:30"],
-                },
               ]}
             />
           </div>
@@ -139,8 +139,8 @@ export default function MaisonFemmePage() {
           </div>
 
           <div className="lg:col-span-7 lg:pl-10">
-            <div className="flex items-center gap-3 text-[10px] tracking-[0.32em] text-[var(--brand-femme)]/90">
-              <span className="inline-block h-px w-10 bg-[var(--brand-femme)]/60" />
+            <div className="flex items-center gap-3 text-[10px] tracking-[0.32em] text-[var(--page-accent)]/90">
+              <span className="inline-block h-px w-10 bg-[var(--page-accent)]/60" />
               <span>UN UNIVERS D&apos;EXCELLENCE</span>
             </div>
 
@@ -148,7 +148,7 @@ export default function MaisonFemmePage() {
               La Maison de la Femme
             </h2>
 
-            <p className="mt-6 max-w-xl text-sm leading-8 text-[var(--brand-slate)]">
+            <p className="mt-6 max-w-xl text-sm leading-8 text-white/70">
               Pour une parenthèse de détente et de bien-être, La Maison de la
               Femme est un espace dédié à la beauté féminine. Découvrez des
               prestations de beauté et de relaxation dans un cadre luxueux dédié
@@ -156,7 +156,7 @@ export default function MaisonFemmePage() {
             </p>
 
             <div className="mt-8 flex items-center gap-3">
-              <span className="grid size-9 place-items-center rounded-full border border-white/10 bg-white/5 text-[var(--brand-slate)]">
+              <span className="grid size-9 place-items-center rounded-full border border-white/10 bg-white/5 text-white/60">
                 ←
               </span>
               <span className="grid size-9 place-items-center rounded-full border border-[var(--brand-femme)]/35 bg-[var(--brand-femme)]/10 text-[var(--brand-femme)]">
@@ -178,7 +178,7 @@ export default function MaisonFemmePage() {
             <h2 className="mt-6 font-serif text-4xl tracking-tight sm:text-5xl">
               Notre Tarification
             </h2>
-            <p className="mt-4 text-sm leading-7 text-[var(--brand-slate)]">
+            <p className="mt-4 text-sm leading-7 text-white/70">
               Découvrez notre équipe d&apos;expertes et notre carte de
               prestations qui mettent vos attentes au cœur de l&apos;expérience.
             </p>
@@ -194,7 +194,7 @@ export default function MaisonFemmePage() {
                     "rounded-full px-4 py-2 text-[10px] tracking-[0.24em] transition-colors",
                     index === 0
                       ? "bg-[var(--brand-femme)] text-white"
-                      : "border border-white/10 bg-white/4 text-[var(--brand-slate)] hover:text-white",
+                      : "border border-white/10 bg-white/4 text-white/60 hover:text-white",
                   ].join(" ")}
                 >
                   {tab}
@@ -212,7 +212,7 @@ export default function MaisonFemmePage() {
                     <div className="font-serif text-2xl tracking-tight">
                       {row.title}
                     </div>
-                    <div className="mt-1 text-[11px] tracking-[0.2em] text-[var(--brand-slate)]">
+                    <div className="mt-1 text-[11px] tracking-[0.2em] text-white/60">
                       {row.subtitle}
                     </div>
                   </div>
@@ -234,7 +234,7 @@ export default function MaisonFemmePage() {
             <h2 className="mt-6 font-serif text-4xl tracking-tight sm:text-5xl">
               Nos Expertes
             </h2>
-            <p className="mt-4 text-sm leading-7 text-[var(--brand-slate)]">
+            <p className="mt-4 text-sm leading-7 text-white/70">
               Découvrez des profils conçus pour illustrer le raffinement, la
               précision et l&apos;expertise de notre univers féminin.
             </p>
@@ -259,7 +259,7 @@ export default function MaisonFemmePage() {
                 <div className="relative -mt-20 px-5 pb-5">
                   <div className="rounded-[1.25rem] border border-white/10 bg-black/55 p-4 backdrop-blur-sm">
                     <div className="font-serif text-xl">{expert.name}</div>
-                    <div className="mt-1 text-[10px] tracking-[0.24em] text-[var(--brand-slate)]">
+                    <div className="mt-1 text-[10px] tracking-[0.24em] text-white/60">
                       {expert.role}
                     </div>
                   </div>

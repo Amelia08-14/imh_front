@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 export default function ContactPage() {
   const infoCards = [
     {
@@ -23,20 +25,36 @@ export default function ContactPage() {
   ];
 
   return (
-    <div className="min-h-full bg-[var(--brand-ink)] text-white">
-      <div className="pointer-events-none fixed inset-0 opacity-55 [background:radial-gradient(700px_circle_at_18%_12%,color-mix(in_srgb,var(--brand-amber)_14%,transparent),transparent_60%),radial-gradient(900px_circle_at_82%_28%,color-mix(in_srgb,var(--brand-amber)_8%,transparent),transparent_60%),radial-gradient(1000px_circle_at_50%_100%,color-mix(in_srgb,var(--brand-slate)_8%,transparent),transparent_60%)]" />
+    <div
+      className="min-h-full bg-[var(--brand-ink)] text-white"
+      style={
+        {
+          "--page-accent": "var(--brand-slate)",
+          "--page-accent-rgb": "113, 124, 125",
+          "--page-accent-2-rgb": "255, 255, 255",
+          "--btn-fg": "#0b0b0b",
+        } as CSSProperties
+      }
+    >
+      <div
+        className="pointer-events-none fixed inset-0 opacity-60"
+        style={{
+          background:
+            "radial-gradient(760px circle at 18% 12%, rgba(var(--page-accent-rgb), 0.22), transparent 58%), radial-gradient(980px circle at 82% 28%, rgba(var(--page-accent-2-rgb), 0.1), transparent 62%), radial-gradient(1100px circle at 50% 100%, rgba(113, 124, 125, 0.12), transparent 60%)",
+        }}
+      />
 
       <main className="relative mx-auto w-full max-w-[88rem] px-6 pb-24 pt-32 sm:px-8 sm:pt-36 xl:px-10">
         <section className="text-center">
-          <div className="flex items-center justify-center gap-3 text-[10px] tracking-[0.32em] text-[var(--brand-amber)]/90">
-            <span className="inline-block h-px w-10 bg-[var(--brand-amber)]/60" />
+          <div className="flex items-center justify-center gap-3 text-[10px] tracking-[0.32em] text-[var(--page-accent)]/90">
+            <span className="inline-block h-px w-10 bg-[var(--page-accent)]/60" />
             <span>RESTEZ EN CONTACT</span>
-            <span className="inline-block h-px w-10 bg-[var(--brand-amber)]/60" />
+            <span className="inline-block h-px w-10 bg-[var(--page-accent)]/60" />
           </div>
           <h1 className="mt-6 font-serif text-5xl tracking-tight sm:text-7xl">
             Écrivez-nous
           </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[var(--brand-slate)]">
+          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-white/70">
             Une question, une demande de réservation de groupe ou un besoin
             d&apos;information sur nos franchises ? Notre équipe est à votre
             disposition.
@@ -56,7 +74,7 @@ export default function ContactPage() {
                     NOM COMPLET
                   </label>
                   <input
-                    className="mt-2 h-12 w-full rounded-[1rem] border border-white/10 bg-black/20 px-4 text-sm outline-none placeholder:text-white/25"
+                    className="mt-2 h-12 w-full rounded-[1rem] border border-white/10 bg-black/20 px-4 text-sm text-white outline-none placeholder:text-white/55"
                     placeholder="Votre nom"
                   />
                 </div>
@@ -65,7 +83,7 @@ export default function ContactPage() {
                     TÉLÉPHONE
                   </label>
                   <input
-                    className="mt-2 h-12 w-full rounded-[1rem] border border-white/10 bg-black/20 px-4 text-sm outline-none placeholder:text-white/25"
+                    className="mt-2 h-12 w-full rounded-[1rem] border border-white/10 bg-black/20 px-4 text-sm text-white outline-none placeholder:text-white/55"
                     placeholder="+213 XXX XX XX XX"
                   />
                 </div>
@@ -76,7 +94,7 @@ export default function ContactPage() {
                   ADRESSE EMAIL
                 </label>
                 <input
-                  className="mt-2 h-12 w-full rounded-[1rem] border border-white/10 bg-black/20 px-4 text-sm outline-none placeholder:text-white/25"
+                  className="mt-2 h-12 w-full rounded-[1rem] border border-white/10 bg-black/20 px-4 text-sm text-white outline-none placeholder:text-white/55"
                   placeholder="vous@example.com"
                 />
               </div>
@@ -93,14 +111,14 @@ export default function ContactPage() {
                   MESSAGE
                 </label>
                 <textarea
-                  className="mt-2 min-h-36 w-full rounded-[1rem] border border-white/10 bg-black/20 px-4 py-4 text-sm outline-none placeholder:text-white/25"
+                  className="mt-2 min-h-36 w-full rounded-[1rem] border border-white/10 bg-black/20 px-4 py-4 text-sm text-white outline-none placeholder:text-white/55"
                   placeholder="Comment pouvons-nous vous aider ?"
                 />
               </div>
 
               <button
                 type="button"
-                className="inline-flex h-12 w-full items-center justify-center rounded-[1rem] bg-[var(--brand-amber)] px-6 text-[11px] font-medium tracking-[0.24em] text-black transition-colors hover:bg-[color:color-mix(in_srgb,var(--brand-amber)_88%,white)]"
+                className="btn-frame inline-flex h-12 w-full items-center justify-center rounded-[1rem] px-6 text-[11px] font-medium tracking-[0.24em] transition-transform hover:-translate-y-0.5"
               >
                 ENVOYER LE MESSAGE
               </button>
@@ -113,13 +131,13 @@ export default function ContactPage() {
                 key={card.title}
                 className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-6"
               >
-                <div className="grid size-10 place-items-center rounded-full border border-[var(--brand-amber)]/35 bg-[var(--brand-amber)]/10 text-[var(--brand-amber)]">
+                <div className="grid size-10 place-items-center rounded-full border border-[var(--page-accent)]/35 bg-[var(--page-accent)]/10 text-[var(--page-accent)]">
                   {card.icon}
                 </div>
                 <h2 className="mt-5 font-serif text-3xl tracking-tight">
                   {card.title}
                 </h2>
-                <p className="mt-4 whitespace-pre-line text-sm leading-8 text-[var(--brand-slate)]">
+                <p className="mt-4 whitespace-pre-line text-sm leading-8 text-white/70">
                   {card.body}
                 </p>
               </article>

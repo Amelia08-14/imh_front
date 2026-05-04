@@ -30,7 +30,7 @@ export function HeroSlider() {
 
   return (
     <div className="relative mx-auto h-[430px] max-w-[620px] sm:h-[620px]">
-      <div className="absolute left-[4%] top-[2%] z-10 h-[42%] w-[46%] overflow-hidden rounded-[2rem] border border-[var(--brand-amber)]/85 shadow-[0_30px_80px_rgba(0,0,0,0.55)]">
+      <div className="absolute left-[4%] top-[2%] z-10 h-[42%] w-[46%] overflow-hidden rounded-[2rem] border border-[var(--page-accent)]/85 shadow-[0_30px_80px_rgba(0,0,0,0.55)]">
         <Image
           src={orderedSlides.next.src}
           alt={orderedSlides.next.alt}
@@ -50,7 +50,7 @@ export function HeroSlider() {
         />
       </div>
 
-      <div className="absolute bottom-[14%] left-[10%] z-20 h-[38%] w-[48%] overflow-hidden rounded-[2rem] border border-[var(--brand-amber)]/75 shadow-[0_22px_60px_rgba(0,0,0,0.65)]">
+      <div className="absolute bottom-[14%] left-[10%] z-20 h-[38%] w-[48%] overflow-hidden rounded-[2rem] border border-[var(--page-accent)]/75 shadow-[0_22px_60px_rgba(0,0,0,0.65)]">
         <Image
           src={orderedSlides.current.src}
           alt={orderedSlides.current.alt}
@@ -61,7 +61,7 @@ export function HeroSlider() {
       </div>
 
       <div className="absolute bottom-[20%] left-0 z-30 rounded-[1.5rem] border border-white/10 bg-[color:color-mix(in_srgb,var(--brand-ink)_86%,transparent)] px-6 py-5 shadow-[0_22px_60px_rgba(0,0,0,0.65)] backdrop-blur-sm">
-        <div className="mb-2 flex items-center gap-1 text-[var(--brand-amber)]">
+        <div className="mb-2 flex items-center gap-1 text-[var(--page-accent)]">
           {Array.from({ length: 5 }).map((_, index) => (
             <span key={index}>★</span>
           ))}
@@ -82,7 +82,7 @@ export function HeroSlider() {
             className={[
               "size-3 rounded-full border transition-colors",
               activeIndex === index
-                ? "border-[var(--brand-amber)] bg-[var(--brand-amber)]/70"
+                ? "border-[var(--page-accent)] bg-[var(--page-accent)]/70"
                 : "border-white/15 bg-white/5",
             ].join(" ")}
           />

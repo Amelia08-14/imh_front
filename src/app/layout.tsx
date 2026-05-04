@@ -1,16 +1,7 @@
 import type { Metadata } from "next";
-import { Roboto_Slab } from "next/font/google";
-
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
 
 import "./globals.css";
-
-const robotoSlab = Roboto_Slab({
-  variable: "--font-roboto-slab",
-  subsets: ["latin"],
-  weight: ["300", "400", "700"],
-});
+import { AppFrame } from "@/components/app-frame";
 
 export const metadata: Metadata = {
   title: "IN Beauty & Health",
@@ -28,14 +19,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="fr"
-      className={`${robotoSlab.variable} h-full antialiased`}
-    >
+    <html lang="fr" className="h-full antialiased">
       <body className="min-h-full flex flex-col bg-[var(--brand-ink)] text-white">
-        <SiteHeader />
-        <div className="flex-1">{children}</div>
-        <SiteFooter />
+        <AppFrame>{children}</AppFrame>
       </body>
     </html>
   );

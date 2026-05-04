@@ -3,10 +3,25 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { siteNavigation } from "@/lib/site-data";
+
+function logoForPath(pathname: string) {
+  if (pathname === "/") return "/logos/La%20Maison%20Beauty%20%26%20Health.png";
+  if (pathname.startsWith("/la-maison-de-l-homme"))
+    return "/logos/LA%20MAISON%20DE%20L%27HOMME.png";
+  if (pathname.startsWith("/la-maison-de-la-femme"))
+    return "/logos/La%20Maison%20de%20la%20femme%20.png";
+  if (pathname.startsWith("/for-mr-and-mrs"))
+    return "/logos/La%20Maison%20MR%20%26%20MRS.png";
+  if (pathname.startsWith("/in-spa")) return "/logos/inspa.png";
+  return "/logos/La%20Maison%20Beauty%20%26%20Health.png";
+}
 
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const logoSrc = logoForPath(pathname);
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
@@ -26,7 +41,7 @@ export function SiteHeader() {
             <button
               type="button"
               onClick={() => setMenuOpen(true)}
-              className="grid size-11 place-items-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:border-[var(--brand-amber)]/40 hover:bg-white/10"
+              className="grid size-11 place-items-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:border-[var(--page-accent)]/40 hover:bg-white/10"
               aria-label="Ouvrir le menu"
             >
               <span className="flex flex-col gap-1">
@@ -48,7 +63,7 @@ export function SiteHeader() {
 
           <Link href="/" className="relative h-10 w-24 shrink-0 sm:h-12 sm:w-28">
             <Image
-              src="/IMH%20BLANC.png"
+              src={logoSrc}
               alt="IN Beauty & Health"
               fill
               className="object-contain"
@@ -58,7 +73,7 @@ export function SiteHeader() {
 
           <Link
             href="/contact"
-            className="inline-flex h-10 items-center rounded-full border border-white/10 bg-white/3 px-5 text-[10px] font-medium tracking-[0.3em] text-white transition-colors hover:border-[var(--brand-amber)]/45 hover:bg-[var(--brand-amber)]/12 sm:px-8"
+            className="btn-luxe-outline inline-flex h-10 items-center rounded-full px-5 text-[10px] font-medium tracking-[0.3em] text-white transition-colors hover:bg-white/8 sm:px-8"
           >
             RÉSERVER
           </Link>
@@ -88,7 +103,7 @@ export function SiteHeader() {
           <div className="flex items-center justify-between">
             <div className="relative h-10 w-24 sm:h-12 sm:w-28">
               <Image
-                src="/IMH%20BLANC.png"
+                src={logoSrc}
                 alt="IN Beauty & Health"
                 fill
                 className="object-contain object-left"
@@ -97,7 +112,7 @@ export function SiteHeader() {
             <button
               type="button"
               onClick={() => setMenuOpen(false)}
-              className="grid size-11 place-items-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:border-[var(--brand-amber)]/40 hover:bg-white/10"
+              className="grid size-11 place-items-center rounded-full border border-white/10 bg-white/5 text-white transition-colors hover:border-[var(--page-accent)]/40 hover:bg-white/10"
               aria-label="Fermer le menu"
             >
               ✕
@@ -123,7 +138,7 @@ export function SiteHeader() {
               <Link
                 href="/contact"
                 onClick={() => setMenuOpen(false)}
-                className="text-lg font-medium tracking-[0.22em] text-[var(--brand-amber)]"
+                className="text-lg font-medium tracking-[0.22em] text-[var(--page-accent)]"
               >
                 CONTACT
               </Link>
