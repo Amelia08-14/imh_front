@@ -43,12 +43,12 @@ export default function DashboardLoginPage() {
                 alt="IN Beauty & Health"
                 width={160}
                 height={160}
-                sizes="44px"
+                sizes="(max-width: 640px) 180px, 220px"
                 quality={100}
                 className="h-11 w-auto"
                 priority
               />
-              <div className="text-[10px] tracking-[0.32em] text-[var(--brand-cyan)]/90">
+              <div className="text-[10px] tracking-[0.32em] text-white/55">
                 BEAUTY & HEALTH
               </div>
             </div>
@@ -104,7 +104,7 @@ export default function DashboardLoginPage() {
                 setSubmitting(false);
               }
             }}
-            className="mt-8 inline-flex h-14 w-full items-center justify-center rounded-[1.25rem] bg-white px-6 text-[11px] font-medium tracking-[0.24em] text-black transition-colors hover:bg-white/90 disabled:opacity-50"
+            className="btn-luxe mt-8 inline-flex h-14 w-full items-center justify-center rounded-[1.25rem] px-6 text-[11px] font-medium tracking-[0.24em] transition-colors hover:opacity-95 disabled:opacity-50"
           >
             {submitting ? "CONNEXION..." : "SE CONNECTER"}
           </button>

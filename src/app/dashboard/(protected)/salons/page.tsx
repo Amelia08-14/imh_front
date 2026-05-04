@@ -69,7 +69,7 @@ export default function DashboardSalonsPage() {
     <div>
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <div className="text-[10px] tracking-[0.32em] text-[var(--brand-cyan)]/90">
+          <div className="text-[10px] tracking-[0.32em] text-white/55">
             SUPER ADMIN
           </div>
           <div className="mt-2 font-serif text-3xl tracking-tight">Salons</div>
@@ -118,7 +118,7 @@ export default function DashboardSalonsPage() {
                 setError(e instanceof Error ? e.message : "Impossible d'ajouter le salon.");
               }
             }}
-            className="inline-flex h-11 items-center justify-center rounded-full bg-white px-6 text-[11px] font-medium tracking-[0.24em] text-black transition-colors hover:bg-white/90 disabled:opacity-50"
+            className="btn-luxe inline-flex h-11 items-center justify-center rounded-full px-6 text-[11px] font-medium tracking-[0.24em] transition-colors hover:opacity-95 disabled:opacity-50"
           >
             AJOUTER
           </button>
@@ -132,7 +132,7 @@ export default function DashboardSalonsPage() {
       ) : null}
 
       <div className="mt-8 overflow-hidden rounded-[1.5rem] border border-white/10">
-        <div className="grid grid-cols-[1.2fr_1fr_1.2fr_auto] gap-4 bg-white/[0.03] px-5 py-3 text-[10px] tracking-[0.24em] text-white/40">
+        <div className="grid grid-cols-[1.4fr_1fr_1.1fr_auto] gap-4 bg-white/[0.03] px-5 py-3 text-[10px] tracking-[0.24em] text-white/40">
           <div>SALON</div>
           <div>CATÉGORIE</div>
           <div>ADRESSE</div>
@@ -146,7 +146,7 @@ export default function DashboardSalonsPage() {
             {items.map((s) => (
               <div
                 key={s.id}
-                className="grid grid-cols-[1.2fr_1fr_1.2fr_auto] items-center gap-4 px-5 py-4"
+                className="grid grid-cols-[1.4fr_1fr_1.1fr_auto] items-center gap-4 px-5 py-4"
               >
                 <div className="flex items-center gap-3">
                   <Image
@@ -154,7 +154,7 @@ export default function DashboardSalonsPage() {
                     alt=""
                     width={160}
                     height={160}
-                    sizes="34px"
+                    sizes="(max-width: 640px) 160px, 180px"
                     quality={100}
                     className="h-9 w-auto"
                   />

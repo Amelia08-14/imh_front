@@ -38,6 +38,37 @@ type AdminIdentity = {
   label: string;
 };
 
+function getDashboardTheme(identity: AdminIdentity | null) {
+  if (identity?.role === "manager") {
+    if (identity.salonCategory === "femme") {
+      return {
+        accent: "var(--brand-femme)",
+        accentRgb: "180, 145, 143",
+        accent2Rgb: "255, 255, 255",
+      };
+    }
+    if (identity.salonCategory === "mrmrs") {
+      return {
+        accent: "var(--brand-mrmrs)",
+        accentRgb: "137, 118, 70",
+        accent2Rgb: "255, 255, 255",
+      };
+    }
+    if (identity.salonCategory === "homme") {
+      return {
+        accent: "rgba(255, 255, 255, 0.92)",
+        accentRgb: "255, 255, 255",
+        accent2Rgb: "113, 124, 125",
+      };
+    }
+  }
+  return {
+    accent: "var(--brand-slate)",
+    accentRgb: "113, 124, 125",
+    accent2Rgb: "255, 255, 255",
+  };
+}
+
 function getBrandLogoPath(identity: AdminIdentity | null) {
   if (!identity) return "/logos/La%20Maison%20Beauty%20%26%20Health.png";
   if (identity.role === "manager") {
@@ -170,7 +201,7 @@ function NavLink({
         "flex h-11 items-center rounded-full border px-5 text-[11px] tracking-[0.24em] transition-colors",
         active
           ? "border-white/20 bg-white/10 text-white"
-          : "border-white/10 bg-white/[0.03] text-[var(--brand-slate)] hover:bg-white/5 hover:text-white",
+          : "border-white/10 bg-white/[0.02] text-white/60 hover:bg-white/5 hover:text-white",
       ].join(" ")}
     >
       {label}
@@ -182,6 +213,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
   const { token, setToken, identity, setSalonId } = useAdminSession();
+  const theme = useMemo(() => getDashboardTheme(identity), [identity]);
 
   useEffect(() => {
     if (!token) router.replace("/dashboard/login");
@@ -214,9 +246,9 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
       className="min-h-full bg-[var(--brand-ink)] text-white"
       style={
         {
-          "--page-accent": "var(--brand-slate)",
-          "--page-accent-rgb": "113, 124, 125",
-          "--page-accent-2-rgb": "255, 255, 255",
+          "--page-accent": theme.accent,
+          "--page-accent-rgb": theme.accentRgb,
+          "--page-accent-2-rgb": theme.accent2Rgb,
           "--btn-fg": "#0b0b0b",
         } as CSSProperties
       }
@@ -225,35 +257,39 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
         className="pointer-events-none fixed inset-0 opacity-60"
         style={{
           background:
-            "radial-gradient(900px circle at 18% 10%, rgba(255, 255, 255, 0.08), transparent 60%), radial-gradient(900px circle at 82% 22%, rgba(var(--page-accent-rgb), 0.2), transparent 62%), radial-gradient(1200px circle at 50% 110%, rgba(113, 124, 125, 0.14), transparent 62%)",
+            "radial-gradient(900px circle at 18% 10%, rgba(255, 255, 255, 0.08), transparent 60%), radial-gradient(900px circle at 82% 22%, rgba(var(--page-accent-rgb), 0.22), transparent 62%), radial-gradient(1200px circle at 50% 110%, rgba(var(--page-accent-2-rgb), 0.12), transparent 62%)",
         }}
       />
 
-      <main className="relative mx-auto w-full max-w-[88rem] px-6 pb-24 pt-28 sm:px-8 sm:pt-32 xl:px-10">
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <div>
-            <div className="flex items-center gap-3">
+      <main className="relative mx-auto w-full max-w-[72rem] px-6 pb-24 pt-16 sm:px-8 sm:pt-20">
+        <div className="rounded-[2rem] border border-white/10 bg-white/[0.02] px-6 py-5 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-sm sm:px-8">
+          <div className="flex flex-wrap items-center justify-between gap-5">
+            <div className="flex items-center gap-4">
               <Image
                 src={getBrandLogoPath(identity)}
                 alt="IN Beauty & Health"
-                width={160}
-                height={160}
-                sizes="44px"
+                width={200}
+                height={200}
+                sizes="(max-width: 640px) 180px, 220px"
                 quality={100}
-                className="h-11 w-auto"
+                className="h-12 w-auto"
                 priority
               />
-              <div className="text-[10px] tracking-[0.32em] text-white/65">
-                {identity?.role === "manager"
-                  ? identity.salonName || "SALON"
-                  : "BEAUTY & HEALTH"}
+              <div>
+                <div className="text-[10px] tracking-[0.32em] text-white/55">
+                  {identity?.role === "manager" ? "SALON" : "BEAUTY & HEALTH"}
+                </div>
+                <div className="mt-2 font-serif text-4xl tracking-tight">
+                  Administration
+                </div>
+                <div className="mt-2 text-[11px] tracking-[0.22em] text-white/45">
+                  {identity?.role === "manager"
+                    ? identity.salonName || identity.label
+                    : identity?.label || "Super admin"}
+                </div>
               </div>
             </div>
-            <div className="mt-3 font-serif text-4xl tracking-tight">
-              Administration
-            </div>
-          </div>
-          <div className="flex flex-wrap items-center gap-3">
+
             <button
               type="button"
               onClick={() => {
@@ -261,14 +297,13 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
                 setSalonId(null);
                 router.replace("/dashboard/login");
               }}
-              className="inline-flex h-11 items-center rounded-full border border-white/10 bg-white/[0.03] px-6 text-[11px] tracking-[0.24em] text-white transition-colors hover:bg-white/5"
+              className="btn-frame inline-flex h-11 items-center rounded-full px-6 text-[11px] tracking-[0.24em] text-white transition-colors hover:bg-white/5"
             >
               DÉCONNEXION
             </button>
           </div>
-        </div>
 
-        <div className="mt-8 flex flex-wrap gap-2">
+          <div className="mt-6 flex flex-wrap gap-2">
           {identity?.role === "super_admin" ? (
             <>
               <NavLink href="/dashboard/salons" label="SALONS" />
@@ -281,9 +316,10 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
               <NavLink href="/dashboard/appointments" label="RENDEZ-VOUS" />
             </>
           )}
+          </div>
         </div>
 
-        <div className="mt-8 rounded-[2rem] border border-white/10 bg-white/[0.03] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.35)] sm:p-8">
+        <div className="mt-8 rounded-[2rem] border border-white/10 bg-white/[0.03] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-sm sm:p-8">
           {children}
         </div>
       </main>

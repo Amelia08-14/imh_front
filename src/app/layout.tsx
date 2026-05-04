@@ -19,8 +19,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className="h-full antialiased">
-      <body className="min-h-full flex flex-col bg-[var(--brand-ink)] text-white">
+    <html lang="fr" className="h-full antialiased" suppressHydrationWarning>
+      <body
+        className="min-h-full flex flex-col bg-[var(--brand-ink)] text-white"
+        suppressHydrationWarning
+      >
         <AppFrame>{children}</AppFrame>
       </body>
     </html>

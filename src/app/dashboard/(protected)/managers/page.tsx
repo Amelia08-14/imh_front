@@ -71,7 +71,7 @@ export default function DashboardManagersPage() {
     <div>
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <div className="text-[10px] tracking-[0.32em] text-[var(--brand-cyan)]/90">
+          <div className="text-[10px] tracking-[0.32em] text-white/55">
             SUPER ADMIN
           </div>
           <div className="mt-2 font-serif text-3xl tracking-tight">Gérants</div>
@@ -128,7 +128,7 @@ export default function DashboardManagersPage() {
                 setError(e instanceof Error ? e.message : "Impossible de créer ce gérant.");
               }
             }}
-            className="inline-flex h-11 items-center justify-center rounded-full bg-white px-6 text-[11px] font-medium tracking-[0.24em] text-black transition-colors hover:bg-white/90 disabled:opacity-50"
+            className="btn-luxe inline-flex h-11 items-center justify-center rounded-full px-6 text-[11px] font-medium tracking-[0.24em] transition-colors hover:opacity-95 disabled:opacity-50"
           >
             CRÉER
           </button>

@@ -75,7 +75,7 @@ export function SiteHeader() {
             href="/contact"
             className="btn-luxe-outline inline-flex h-10 items-center rounded-full px-5 text-[10px] font-medium tracking-[0.3em] text-white transition-colors hover:bg-white/8 sm:px-8"
           >
-            RÉSERVER
+            CONTACTEZ NOUS
           </Link>
         </div>
       </header>

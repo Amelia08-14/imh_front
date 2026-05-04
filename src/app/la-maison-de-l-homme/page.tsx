@@ -1,22 +1,7 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
+import { MaisonHommePricing } from "@/components/maison-homme-pricing";
 import { ReservationFormContainer } from "@/components/reservation-form-container";
-
-const pricingTabs = [
-  "Coiffures",
-  "Couleurs",
-  "Brushing",
-  "Finishing",
-  "Soins de visage",
-  "Soins capillaires",
-];
-
-const pricingRows = [
-  { title: "Coupe Adulte", subtitle: "Coiffure & mise en forme", price: "à partir de 2000 DA" },
-  { title: "Coupe Enfant", subtitle: "Finition nette et rapide", price: "500 DA" },
-  { title: "Contour & Barbe", subtitle: "Traçage et entretien", price: "600 DA" },
-  { title: "Rasage Premium", subtitle: "Serviette chaude & finition", price: "900 DA" },
-];
 
 const team = [
   { name: "Karim Z.", role: "Maître barbier", image: "/maison_homme.jpg" },
@@ -167,46 +152,7 @@ export default function MaisonHommePage() {
               répondre au mieux à vos attentes.
             </p>
           </div>
-
-          <div className="mt-12 overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.03] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.35)] sm:p-8">
-            <div className="flex flex-wrap gap-2">
-              {pricingTabs.map((tab, index) => (
-                <button
-                  key={tab}
-                  type="button"
-                  className={[
-                    "rounded-full px-4 py-2 text-[10px] tracking-[0.24em] transition-colors",
-                    index === 0
-                      ? "bg-[var(--page-accent)] text-black"
-                      : "border border-white/10 bg-white/4 text-white/60 hover:text-white",
-                  ].join(" ")}
-                >
-                  {tab}
-                </button>
-              ))}
-            </div>
-
-            <div className="mt-8 divide-y divide-white/8">
-              {pricingRows.map((row) => (
-                <div
-                  key={row.title}
-                  className="grid gap-3 py-5 sm:grid-cols-[1fr_auto] sm:items-center"
-                >
-                  <div>
-                    <div className="font-serif text-2xl tracking-tight">
-                      {row.title}
-                    </div>
-                    <div className="mt-1 text-[11px] tracking-[0.2em] text-white/60">
-                      {row.subtitle}
-                    </div>
-                  </div>
-                  <div className="text-sm text-[var(--page-accent)]">
-                    {row.price}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <MaisonHommePricing />
         </section>
 
         <section id="barbiers" className="border-t border-white/8 py-20">
